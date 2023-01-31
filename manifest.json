@@ -1,23 +1,33 @@
 {
-    "manifest_version": 2,
-  
-    "version": "4",
-    "name": "Eclipse Che Cloud IDE hosted on OpenShift",
-    "description": "Add a button to Github that opens projects on Red Hat's hosted version of Eclipse Che, running on OpenShift.",
-  
-    "content_scripts": [ {
-      "js":      [ "options.js", "script.js"  ],
-      "matches": [ "https://github.com/*" ],
-      "run_at":  "document_idle"
-    } ],
-    "permissions": [
-      "storage"
-    ],
-    "options_ui": {
-      "page": "options.html",
-      "open_in_tab": false
-    },
-    "icons": {
-      "32": "osio32.png"
+  "manifest_version": 3,
+  "version": "0.0.1",
+  "name": "Try in Web IDE",
+  "description": "Add a button to GitHub that opens projects on web IDE instances.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{e5b67b9e-a1bd-11ed-a8fc-0242ac120002}"
     }
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "options.js",
+        "script.js"
+      ],
+      "matches": [
+        "https://github.com/*"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "icons": {
+    "32": "osio32.png"
   }
+}

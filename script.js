@@ -36,7 +36,7 @@ function insertLink(cb) {
         link.href = url + "/f?url=" + project;
         link.target = '_blank';
         link.title = 'Open the project on ' + url;
-        link.className = "btn btn-sm btn-primary"
+        link.className = "btn btn-primary ml-2"
         link.appendChild(window.document.createTextNode('Che'));
         container.appendChild(link);
         cb(container);

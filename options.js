@@ -41,8 +41,6 @@ function addEnpoint(parent, endpoint) {
 
 function refresh() {
 	  var element = document.getElementById('url');
-	  //var cElement = element.cloneNode(false);
-      //element.parentNode.replaceChild(cElement, element);
     if (element) {
       element.innerHTML = '';
       for(var i in preferences.endpoints) {
