@@ -51,7 +51,7 @@ function refresh() {
 
 function loadPreferences(cb) {
   chrome.storage.sync.get({
-    endpoints: [{url: 'https://che.openshift.io', active:true, readonly: true}]
+    endpoints: [{url: 'https://workspaces.openshift.com', active:true, readonly: true}]
   }, cb);
 }
 

@@ -33,11 +33,11 @@ function insertLink(cb) {
     container.className = 'float-right';
     var link = window.document.createElement('a');
     getSelectedEnpoint(url => {
-        link.href = url + "/f?url=" + project;
+        link.href = url + "/#" + project;
         link.target = '_blank';
         link.title = 'Open the project on ' + url;
         link.className = "btn btn-primary ml-2"
-        link.appendChild(window.document.createTextNode('Che'));
+        link.appendChild(window.document.createTextNode('Web IDE'));
         container.appendChild(link);
         cb(container);
     })
