@@ -1,8 +1,6 @@
 {
   "manifest_version": 3,
-  "version": "0.0.1",
   "name": "Try in Web IDE",
-  "description": "Add a button to GitHub that opens projects on web IDE instances.",
   "browser_specific_settings": {
     "gecko": {
       "id": "{e5b67b9e-a1bd-11ed-a8fc-0242ac120002}"
@@ -11,8 +9,8 @@
   "content_scripts": [
     {
       "js": [
-        "options.js",
-        "script.js"
+        "options.bundle.js",
+        "contentScript.bundle.js"
       ],
       "matches": [
         "https://github.com/*"
