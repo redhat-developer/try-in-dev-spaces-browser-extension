@@ -1,11 +1,11 @@
 // Saves options to chrome.storage
 var preferences = null;
 function save_options() {
-  chrome.storage.sync.set(preferences, function() {
+  chrome.storage.sync.set(preferences, function () {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
     status.textContent = 'Options saved.';
-    setTimeout(function() {
+    setTimeout(function () {
       status.textContent = '';
     }, 750);
   });
@@ -40,13 +40,13 @@ function addEnpoint(parent, endpoint) {
 }
 
 function refresh() {
-	  var element = document.getElementById('url');
-    if (element) {
-      element.innerHTML = '';
-      for(var i in preferences.endpoints) {
-        addEnpoint(element, preferences.endpoints[i]);
-      }
+  var element = document.getElementById('url');
+  if (element) {
+    element.innerHTML = '';
+    for (var i in preferences.endpoints) {
+      addEnpoint(element, preferences.endpoints[i]);
     }
+  }
 }
 
 function loadPreferences(cb) {
@@ -59,22 +59,22 @@ function loadPreferences(cb) {
 // stored in chrome.storage.
 function restore_options() {
   // Use default value color = 'red' and likesColor = true.
-  loadPreferences(function(items) {
-	  preferences = items;
-	  refresh();
+  loadPreferences(function (items) {
+    preferences = items;
+    refresh();
   });
 }
 
 function newEndpoint() {
-	var el = document.getElementById('newEndpoint');
-	if (el !== null) {
+  var el = document.getElementById('newEndpoint');
+  if (el !== null) {
     preferences.endpoints.forEach(element => {
       element.active = false;
     });
-		preferences.endpoints.push({url: el.value, active: true, readonly: false});
+    preferences.endpoints.push({ url: (el as HTMLInputElement).value, active: true, readonly: false });
     refresh();
     save_options();
-	}
+  }
 }
 
 function removeEndpoint(endpoint) {
@@ -94,7 +94,7 @@ function setActive(endpoint) {
   save_options();
 }
 
-function getSelectedEnpoint(cb) {
+export function getSelectedEnpoint(cb) {
   if (preferences) {
     cb(preferences.endpoints.filter(element => element.active)[0].url);
   } else {
@@ -106,8 +106,8 @@ function getSelectedEnpoint(cb) {
 }
 
 restore_options();
-el = document.getElementById('new');
+const el = document.getElementById('new');
 if (el) {
   el.addEventListener('click',
-  newEndpoint);
+    newEndpoint);
 }
