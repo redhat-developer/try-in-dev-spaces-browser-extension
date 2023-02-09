@@ -7,11 +7,16 @@ After building the extension, sideload the extension located in the `dist` folde
 2. Enable `Developer mode`.
 3. Click `Load unpacked` and provide the location to the `dist` folder.
 4. Upon loading the extension, the `Unrecognized manifest key 'browser_specfic_settings` warning can be ignored.
+5. In the extension's `Permissions` tab, provide the permissions to access data for `https://github.com`.
 
 ## Firefox version
 1. Open the `about:debugging` page.
 2. Navigate to `This Firefox`.
 3. Click `Load Temporary Add-on` then select any file in the `dist` folder.
+4. Open the `about:addons` page.
+5. Under the extensions `Permissions` tab, provide permissions for the extension to access data on `https://github.com`.
+
+![Step 5](./images/firefox/step-5.png)
 
 ## Safari version
 To sideload the extension on Safari, Xcode is required.
