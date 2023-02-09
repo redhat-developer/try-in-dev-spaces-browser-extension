@@ -95,7 +95,7 @@ export class GitHubService implements GitService {
         const a = document.createElement("a");
 
         li.className = "gh-list-item";
-        a.className = "gh-dropdown-item gh-list-item-div";
+        a.className = "gh-dropdown-item";
         a.href = getFactoryUrl(projectUrl, endpoint);
         a.target = "_blank";
         a.title = "Open the project on " + endpoint.url;
