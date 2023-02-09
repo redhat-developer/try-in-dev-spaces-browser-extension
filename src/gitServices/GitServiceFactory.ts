@@ -1,4 +1,4 @@
-import { GitHubService } from "./GitHubService";
+import { GitHubService } from "./github/GitHubService";
 import { GitService } from "./GitService";
 
 export class GitServiceFactory {

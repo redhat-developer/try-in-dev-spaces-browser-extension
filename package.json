@@ -5,6 +5,7 @@
   "repository": "https://github.com/redhat-developer/try-in-web-ide-browser-extension",
   "license": "MIT",
   "devDependencies": {
+    "@popperjs/core": "^2.11.6",
     "@types/chrome": "^0.0.211",
     "@types/node": "^18.11.18",
     "@types/webpack": "^5.28.0",
