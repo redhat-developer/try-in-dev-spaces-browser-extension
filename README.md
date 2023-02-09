@@ -1,6 +1,6 @@
 # Try in Web IDE Browser Extension
 
-This web extension adds a `Web IDE` on every GitHub repository page that starts a new workspace based on the current repository.
+This web extension adds a `Web IDE` button on every GitHub repository page that starts a new workspace based on the current repository.
 
 ![GitHub button example](./images/readme/github-button-example.png)
 
