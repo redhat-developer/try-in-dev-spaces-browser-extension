@@ -7,11 +7,11 @@ export interface Endpoint {
 const DEFAULT_ENDPOINTS: Endpoint[] = [{ url: 'https://workspaces.openshift.com', active: true, readonly: true }];
 
 export async function getCurrentEndpoint() {
-    const endpoints = await loadPreferences();
+    const endpoints = await getEndpoints();
     return endpoints.find(endpoint => endpoint.active);
 }
 
-async function loadPreferences(): Promise<Endpoint[]> {
+export async function getEndpoints(): Promise<Endpoint[]> {
     const res = await chrome.storage.sync.get({
         endpoints: DEFAULT_ENDPOINTS
     });
