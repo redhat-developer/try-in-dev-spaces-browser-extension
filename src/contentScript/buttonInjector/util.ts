@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See LICENSE file in the project root for license information.
  *-----------------------------------------------------------------------------------------------*/
 
-import { Endpoint } from '../preferences';
+import { Endpoint } from '../../preferences';
 
 export function getProjectURL() {
     const meta = window.document.querySelector('meta[property="og:url"]');
