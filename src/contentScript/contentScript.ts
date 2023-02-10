@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See LICENSE file in the project root for license information.
  *-----------------------------------------------------------------------------------------------*/
 
-import { ButtonInjectorFactory } from '../buttonInjector/ButtonInjectorFactory';
+import { ButtonInjectorFactory } from './buttonInjector/ButtonInjectorFactory';
 
 try {
     ButtonInjectorFactory.getButtonInjector()?.inject();

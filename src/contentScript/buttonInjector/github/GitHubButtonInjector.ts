@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See LICENSE file in the project root for license information.
  *-----------------------------------------------------------------------------------------------*/
 
-import { Endpoint, getEndpoints } from "../../preferences";
+import { Endpoint, getEndpoints } from "../../../preferences";
 import { ButtonInjector } from "../ButtonInjector";
 import { getFactoryUrl, getHostName, getProjectURL } from "../util";
 import { createPopper } from "@popperjs/core";
