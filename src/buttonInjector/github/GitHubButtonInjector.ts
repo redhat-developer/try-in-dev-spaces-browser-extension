@@ -4,12 +4,12 @@
  *-----------------------------------------------------------------------------------------------*/
 
 import { Endpoint, getEndpoints } from "../../preferences";
-import { GitService } from "../GitService";
+import { ButtonInjector } from "../ButtonInjector";
 import { getFactoryUrl, getHostName, getProjectURL } from "../util";
 import { createPopper } from "@popperjs/core";
 import "./github.css";
 
-export class GitHubService implements GitService {
+export class GitHubButtonInjector implements ButtonInjector {
     private static BUTTON_ID = "try-in-web-ide-btn";
 
     /**
@@ -20,21 +20,21 @@ export class GitHubService implements GitService {
         return !!actionBar;
     }
 
-    public async injectButton() {
-        await this._injectButton();
+    public async inject() {
+        await this._inject();
 
         // GitHub uses Turbo to load the project repo's `Code`, `Issues`, `Pull requests`,
         // `Actions`, etc. pages. In case the user clicks from a non-Code page to the Code
         // page, try to inject button.
         document.addEventListener("turbo:load", () => {
-            if (GitHubService.matches()) {
-                this._injectButton();
+            if (GitHubButtonInjector.matches()) {
+                this._inject();
             }
         });
     }
 
-    private async _injectButton() {
-        if (document.getElementById(GitHubService.BUTTON_ID)) {
+    private async _inject() {
+        if (document.getElementById(GitHubButtonInjector.BUTTON_ID)) {
             return;
         }
 
@@ -59,7 +59,7 @@ export class GitHubService implements GitService {
         endpoint: Endpoint
     ) {
         const btnGroup = document.createElement("div");
-        btnGroup.id = GitHubService.BUTTON_ID;
+        btnGroup.id = GitHubButtonInjector.BUTTON_ID;
         btnGroup.className = "gh-btn-group ml-2";
         const btn = window.document.createElement("a");
         btn.href = endpoint.url + "/#" + projectUrl;
@@ -83,7 +83,7 @@ export class GitHubService implements GitService {
     ) {
         const btnGroup = document.createElement("div");
         btnGroup.className = "gh-btn-group ml-2";
-        btnGroup.id = GitHubService.BUTTON_ID;
+        btnGroup.id = GitHubButtonInjector.BUTTON_ID;
 
         const btn = document.createElement("a");
         btn.className = "gh-btn btn-primary";

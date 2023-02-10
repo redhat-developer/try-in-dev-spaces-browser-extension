@@ -3,13 +3,13 @@
  *  Licensed under the MIT License. See LICENSE file in the project root for license information.
  *-----------------------------------------------------------------------------------------------*/
 
-import { GitHubService } from "./github/GitHubService";
-import { GitService } from "./GitService";
+import { GitHubButtonInjector } from "./github/GitHubButtonInjector";
+import { ButtonInjector } from "./ButtonInjector";
 
-export class GitServiceFactory {
-    static getGitService(): GitService | undefined {
-        if (GitHubService.matches()) {
-            return new GitHubService();
+export class ButtonInjectorFactory {
+    static getButtonInjector(): ButtonInjector | undefined {
+        if (GitHubButtonInjector.matches()) {
+            return new GitHubButtonInjector();
         }
         return undefined;
     }
