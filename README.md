@@ -16,12 +16,17 @@ Additional instances can configured from the extension's options.
 
 ## Quick start
 
-1. Build the extension. This command creates a `dist` folder containing the built extension.
+1. Download dependencies and build the extension. The built extension will be located in the generated `dist` folder.
 ```
-$ yarn build
+$ yarn && yarn build
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 For development, run `yarn watch` to watch the source files to recompile on changes.
 
 2. Sideload the extension located in the `dist` folder into your web browser.
 For instructions for different web browsers, refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## Running tests
+```
+$ yarn test
+```
