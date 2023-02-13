@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See LICENSE file in the project root for license information.
  *-----------------------------------------------------------------------------------------------*/
 
-import { Endpoint, getEndpoints } from "../../../preferences";
+import { Endpoint, getEndpoints } from "../../../preferences/preferences";
 import { ButtonInjector } from "../ButtonInjector";
 import { getFactoryUrl, getHostName, getProjectURL } from "../util";
 import { createPopper } from "@popperjs/core";
@@ -16,7 +16,7 @@ export class GitHubButtonInjector implements ButtonInjector {
      * @returns true if current page is a GitHub page to inject the button to
      */
     public static matches(): boolean {
-        const actionBar = window.document.querySelector(".file-navigation");
+        const actionBar = document.querySelector(".file-navigation");
         return !!actionBar;
     }
 
@@ -38,7 +38,7 @@ export class GitHubButtonInjector implements ButtonInjector {
             return;
         }
 
-        const actionBar = window.document.querySelector(".file-navigation");
+        const actionBar = document.querySelector(".file-navigation");
         const project = getProjectURL();
         const endpoints = await getEndpoints();
         if (endpoints.length === 1) {
@@ -61,12 +61,12 @@ export class GitHubButtonInjector implements ButtonInjector {
         const btnGroup = document.createElement("div");
         btnGroup.id = GitHubButtonInjector.BUTTON_ID;
         btnGroup.className = "gh-btn-group ml-2";
-        const btn = window.document.createElement("a");
+        const btn = document.createElement("a");
         btn.href = endpoint.url + "/#" + projectUrl;
         btn.target = "_blank";
         btn.title = "Open the project on " + endpoint.url;
         btn.className = "gh-btn btn-primary";
-        btn.appendChild(window.document.createTextNode("Web IDE"));
+        btn.appendChild(document.createTextNode("Web IDE"));
         btnGroup.appendChild(btn);
         element.appendChild(btnGroup);
     }
@@ -91,7 +91,7 @@ export class GitHubButtonInjector implements ButtonInjector {
         btn.href = activeEndpoint.url + "/#" + projectUrl;
         btn.target = "_blank";
         btn.title = "Open the project on " + activeEndpoint.url;
-        btn.appendChild(window.document.createTextNode("Web IDE"));
+        btn.appendChild(document.createTextNode("Web IDE"));
         btnGroup.appendChild(btn);
 
         const dropdownBtn = document.createElement("button");
