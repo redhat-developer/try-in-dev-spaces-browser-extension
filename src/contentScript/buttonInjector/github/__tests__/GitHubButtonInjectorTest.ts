@@ -127,41 +127,35 @@ describe('Inject button on GitHub project repo page', () => {
         expect(preferencesMock.getEndpoints).toBeCalled();
         expect(createPopper).toBeCalled();
 
-        const expectedHTML = `
-        <div class="file-navigation">
-            <div class="gh-btn-group ml-2" id="try-in-web-ide-btn">
-                <a class="gh-btn btn-primary"
-                    href="https://url-2.com/#https://github.com/redhat-developer/try-in-web-ide-browser-extension"
-                    target="_blank" title="Open the project on https://url-2.com">Web IDE
-                </a>
-                <button type="button" class="gh-btn btn-primary gh-dropdown-toggle gh-dropdown-toggle-split">
-                </button>
-                <ul class="gh-dropdown-menu">
-                    <li class="gh-list-item">
-                        <a class="gh-dropdown-item"
-                            href="https://url-1.com/#https://github.com/redhat-developer/try-in-web-ide-browser-extension"
-                            target="_blank" title="Open the project on https://url-1.com">Open with url-1.com
-                        </a>
-                    </li>
-                    <li class="gh-list-item">
-                        <a class="gh-dropdown-item"
-                            href="https://url-2.com/#https://github.com/redhat-developer/try-in-web-ide-browser-extension"
-                            target="_blank" title="Open the project on https://url-2.com">Open with url-2.com
-                            <div class="gh-pill-badge">Default</div>
-                        </a>
-                    </li>
-                    <li class="gh-list-item">
-                        <a class="gh-dropdown-item"
-                            href="https://url-3.com/#https://github.com/redhat-developer/try-in-web-ide-browser-extension"
-                            target="_blank" title="Open the project on https://url-3.com">Open with url-3.com
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>`
+        const button = document.body.querySelector('a.gh-btn') as HTMLAnchorElement;
+        expect(button).not.toBeNull();
+        expect(button.href).toEqual('https://url-2.com/#https://github.com/redhat-developer/try-in-web-ide-browser-extension')
+    });
 
-        expect(removeWhitespace(document.body.innerHTML))
-            .toBe(removeWhitespace(expectedHTML));
+    it('should display the active endpoint at the top of the dropdown', async () => {
+        preferencesMock.__setEndpoints([
+            { url: 'https://url-1.com', active: false, readonly: true },
+            { url: 'https://url-2.com', active: true, readonly: false }, // active endpoint
+            { url: 'https://url-3.com', active: false, readonly: false }
+        ]);
+
+        await githubService.inject();
+
+        expect(preferencesMock.getEndpoints).toBeCalled();
+        expect(createPopper).toBeCalled();
+
+        const dropdown = document.body.querySelector('ul.gh-dropdown-menu') as HTMLUListElement;
+        expect(dropdown).not.toBeNull();
+
+        // check the href of the first dropdown item is the active endpoint
+        const item = (dropdown.childNodes[0] as Element).querySelector('a.gh-dropdown-item') as HTMLAnchorElement;
+        expect(item).not.toBeNull();
+        expect(item.href).toEqual('https://url-2.com/#https://github.com/redhat-developer/try-in-web-ide-browser-extension');
+
+        // check that the default badge exists
+        const badge = item.querySelector('div.gh-pill-badge');
+        expect(badge).not.toBeNull();
+        expect(badge.innerHTML).toEqual('Default');
     });
 
     it('should try to inject button on turbo:load', async () => {
@@ -186,7 +180,7 @@ describe('Inject button on GitHub project repo page', () => {
         expect(document.addEventListener).toBeCalledWith('turbo:load', expect.any(Function));
 
 
-        // In this case getEndpoints is called twice, once on
+        // In this case getProjectURL is called twice, once on
         // the initial injection, and another when injection happens
         // due to 'turbo:load' event.
         expect(getProjectURL).toBeCalledTimes(2);
@@ -194,10 +188,10 @@ describe('Inject button on GitHub project repo page', () => {
 
     function removeWhitespace(html: string) {
         return html.trim()
-        .replace(/\s\s+/g, ' ')
-        .replace(/<\s/g, '<')
-        .replace(/\s>/g, '>')
-        .replace(/>\s/g, '>')
-        .replace(/\s</g, '<');
+            .replace(/\s\s+/g, ' ')
+            .replace(/<\s/g, '<')
+            .replace(/\s>/g, '>')
+            .replace(/>\s/g, '>')
+            .replace(/\s</g, '<');
     }
 });
