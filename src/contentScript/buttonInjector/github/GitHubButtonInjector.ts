@@ -103,6 +103,7 @@ export class GitHubButtonInjector implements ButtonInjector {
         const dropdownContent = document.createElement("ul");
         dropdownContent.className = "gh-dropdown-menu";
 
+        this.setActiveEndpointToFront(endpoints);
         endpoints.forEach((e) => {
             dropdownContent.appendChild(
                 this.createEndpiontListItem(projectUrl, e)
@@ -113,6 +114,15 @@ export class GitHubButtonInjector implements ButtonInjector {
         element.appendChild(btnGroup);
 
         this.setUpDropdown(dropdownBtn, dropdownContent);
+    }
+
+    private setActiveEndpointToFront(endpoints: Endpoint[]) {
+        const active = endpoints.find(e => e.active);
+        if (!active) {
+            throw new Error('No endpoint is selected in the extension options.')
+        }
+        endpoints.splice(endpoints.findIndex(e => e.active), 1);
+        endpoints.unshift(active);
     }
 
     private createEndpiontListItem(projectUrl: string, endpoint: Endpoint) {
