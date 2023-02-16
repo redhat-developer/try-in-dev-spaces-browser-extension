@@ -1,12 +1,12 @@
-# Try in Web IDE Browser Extension
+# Try in Dev Spaces Browser Extension
 
-This web extension adds a `Web IDE` button on every GitHub repository page that starts a new workspace based on the current repository.
+This web extension adds a `Dev Spaces` button on every GitHub repository page that starts a new workspace based on the current repository.
 
 ![GitHub button example](./images/readme/github-button-example.png)
 
 By default, the new workspace is created on the [Eclipse Che® hosted by Red Hat instance](https://developers.redhat.com/developer-sandbox/ide).
 
-Additional instances can configured from the extension's options.
+Additional Dev Spaces (and upstream Eclipse Che®) instances can configured from the extension's options.
 
 ## Extension permissions
 

@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Try in Web IDE",
+  "name": "Try in Dev Spaces",
   "browser_specific_settings": {
     "gecko": {
       "id": "{e5b67b9e-a1bd-11ed-a8fc-0242ac120002}"
