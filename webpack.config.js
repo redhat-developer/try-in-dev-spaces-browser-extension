@@ -19,6 +19,12 @@ const config = {
       'contentScript',
       'contentScript.ts'
     ),
+    backgroundScript: path.join(
+      __dirname,
+      'src',
+      'backgroundScript',
+      'backgroundScript.ts'
+    ),
   },
   output: {
     filename: '[name].bundle.js',

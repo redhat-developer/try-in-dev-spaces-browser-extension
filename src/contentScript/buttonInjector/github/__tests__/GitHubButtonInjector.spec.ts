@@ -7,6 +7,7 @@ import { GitHubButtonInjector } from '../GitHubButtonInjector';
 
 const preferencesMock = require('../../../../preferences/preferences');
 import { createPopper } from '@popperjs/core';
+import { chrome } from 'jest-chrome'
 import { getProjectURL } from '../../util';
 
 jest.mock('../../../../preferences/preferences')
@@ -37,6 +38,7 @@ describe('Inject button on GitHub project repo page', () => {
 
     afterEach(() => {
         jest.clearAllMocks();
+        jest.restoreAllMocks();
     });
 
     it('should inject only the button when there is one configured endpoint', async () => {
@@ -47,18 +49,24 @@ describe('Inject button on GitHub project repo page', () => {
         await githubService.inject();
 
         expect(preferencesMock.getEndpoints).toBeCalled();
-        expect(createPopper).toBeCalledTimes(0);
+        expect(createPopper).toBeCalled();
 
         const expectedHTML = `
-        <div class="file-navigation">
-            <div id="try-in-web-ide-btn" class="gh-btn-group ml-2">
-            <a
-                href="https://url-1.com/#https://github.com/redhat-developer/try-in-web-ide-browser-extension"
-                target="_blank"
-                title="Open the project on https://url-1.com"
-                class="gh-btn btn-primary"
-                >Dev Spaces
-            </a>
+        <div class=\"file-navigation\">
+            <div class=\"gh-btn-group ml-2\" id=\"try-in-web-ide-btn\"><a class=\"gh-btn btn-primary\"
+                    href=\"https://url-1.com/#https://github.com/redhat-developer/try-in-web-ide-browser-extension\"
+                    target=\"_blank\" title=\"Open the project on https://url-1.com\">Dev Spaces</a><button type=\"button\"
+                    class=\"gh-btn btn-primary gh-dropdown-toggle gh-dropdown-toggle-split\"></button>
+                <ul class=\"gh-dropdown-menu\">
+                    <li class=\"gh-list-item\"><a class=\"gh-dropdown-item\"
+                            href=\"https://url-1.com/#https://github.com/redhat-developer/try-in-web-ide-browser-extension\"
+                            target=\"_blank\" title=\"Open the project on https://url-1.com\">Open with url-1.com<div
+                                class=\"gh-pill-badge\">Default</div></a></li>
+                    <li>
+                        <hr class=\"gh-dropdown-divider\">
+                    </li>
+                    <li class=\"gh-list-item\"><a class=\"gh-dropdown-item\">Configure</a></li>
+                </ul>
             </div>
         </div>`
 
@@ -107,6 +115,10 @@ describe('Inject button on GitHub project repo page', () => {
                             target="_blank" title="Open the project on https://url-3.com">Open with url-3.com
                         </a>
                     </li>
+                    <li>
+                        <hr class=\"gh-dropdown-divider\">
+                    </li>
+                    <li class=\"gh-list-item\"><a class=\"gh-dropdown-item\">Configure</a></li>
                 </ul>
             </div>
         </div>`
@@ -160,30 +172,47 @@ describe('Inject button on GitHub project repo page', () => {
 
     it('should try to inject button on turbo:load', async () => {
         preferencesMock.__setEndpoints([
-            { url: 'https://url-1.com', active: false, readonly: true }
+            { url: 'https://url-1.com', active: true, readonly: true }
         ]);
 
-        document.querySelector = jest.fn().mockImplementation((query: string) => {
+        jest.spyOn(document, 'querySelector').mockImplementation((_: string) => {
             const div = document.createElement('div');
             div.className = 'file-navigation';
             return div;
-        })
-
-        document.addEventListener = jest.fn().mockImplementationOnce((_, callback) => {
-            // call the event listener function right away
-            callback();
         });
 
+        const addEventListenerSpy = jest.spyOn(document, 'addEventListener');
+        addEventListenerSpy.mockImplementationOnce((event: string, callback) => {
+            // call the event listener function right away
+            (callback as EventListener)(new Event(event));
+        });
 
         await githubService.inject();
 
-        expect(document.addEventListener).toBeCalledWith('turbo:load', expect.any(Function));
-
+        expect(addEventListenerSpy).toBeCalledWith('turbo:load', expect.any(Function));
 
         // In this case getProjectURL is called twice, once on
         // the initial injection, and another when injection happens
         // due to 'turbo:load' event.
         expect(getProjectURL).toBeCalledTimes(2);
+    });
+
+    it('should send message to open options page when configure button is clicked', async () => {
+        preferencesMock.__setEndpoints(
+            [{ url: 'https://url-1.com', active: true, readonly: true }]
+        );
+
+        await githubService.inject();
+
+        const dropdownItems = document.body.querySelector('ul.gh-dropdown-menu');
+        expect(dropdownItems).not.toBeNull();
+
+        const configureBtn = dropdownItems.lastChild.firstChild as HTMLAnchorElement;
+        expect(configureBtn.innerHTML).toEqual('Configure');
+        
+        // click the configure button
+        configureBtn.onclick(new MouseEvent('click'));
+        expect(chrome.runtime.sendMessage).toBeCalledWith({'action': 'openOptionsPage'});
     });
 
     function removeWhitespace(html: string) {
