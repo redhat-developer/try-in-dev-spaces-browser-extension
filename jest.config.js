@@ -10,5 +10,6 @@ module.exports = {
     moduleNameMapper : {
         '\\.(css)$': '<rootDir>/src/contentScript/buttonInjector/__mocks__/css.ts'
     },
-    testEnvironment: "jsdom"
+    testEnvironment: "jsdom",
+    setupFilesAfterEnv: ['./jest.setup.js'],
 };

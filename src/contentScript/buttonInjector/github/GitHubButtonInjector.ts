@@ -8,6 +8,7 @@ import { ButtonInjector } from "../ButtonInjector";
 import { getFactoryUrl, getHostName, getProjectURL } from "../util";
 import { createPopper } from "@popperjs/core";
 import "./github.css";
+import { OPEN_OPTIONS } from '../../../backgroundScript/backgroundScript';
 
 export class GitHubButtonInjector implements ButtonInjector {
     private static BUTTON_ID = "try-in-web-ide-btn";
@@ -41,34 +42,7 @@ export class GitHubButtonInjector implements ButtonInjector {
         const actionBar = document.querySelector(".file-navigation");
         const project = getProjectURL();
         const endpoints = await getEndpoints();
-        if (endpoints.length === 1) {
-            this.injectButtonNoDropdown(actionBar, project, endpoints[0]);
-        } else {
-            this.injectButtonDropdown(actionBar, project, endpoints);
-        }
-    }
-
-    /**
-     * @param element the DOM element to inject the button into
-     * @param projectUrl the project url
-     * @param endpoints the configured Dev Spaces endpoint
-     */
-    private injectButtonNoDropdown(
-        element: Element,
-        projectUrl: string,
-        endpoint: Endpoint
-    ) {
-        const btnGroup = document.createElement("div");
-        btnGroup.id = GitHubButtonInjector.BUTTON_ID;
-        btnGroup.className = "gh-btn-group ml-2";
-        const btn = document.createElement("a");
-        btn.href = endpoint.url + "/#" + projectUrl;
-        btn.target = "_blank";
-        btn.title = "Open the project on " + endpoint.url;
-        btn.className = "gh-btn btn-primary";
-        btn.appendChild(document.createTextNode("Dev Spaces"));
-        btnGroup.appendChild(btn);
-        element.appendChild(btnGroup);
+        this.injectButtonDropdown(actionBar, project, endpoints);
     }
 
     /**
@@ -109,6 +83,11 @@ export class GitHubButtonInjector implements ButtonInjector {
                 this.createEndpiontListItem(projectUrl, e)
             );
         });
+        dropdownContent.appendChild(
+            this.createDivider()
+        );
+
+        dropdownContent.appendChild(this.createConfigureItem());
 
         btnGroup.appendChild(dropdownContent);
         element.appendChild(btnGroup);
@@ -145,6 +124,27 @@ export class GitHubButtonInjector implements ButtonInjector {
         }
 
         li.append(a);
+        return li;
+    }
+
+    private createDivider() {
+        const li = document.createElement("li");
+        const hr = document.createElement("hr");
+        hr.className = "gh-dropdown-divider";
+        li.appendChild(hr);
+        return li;
+    }
+
+    private createConfigureItem() {
+        const li = document.createElement("li");
+        li.className = "gh-list-item";
+        const a = document.createElement("a");
+        a.className = "gh-dropdown-item";
+        a.appendChild(document.createTextNode("Configure"));
+        a.onclick = () => {
+            chrome.runtime.sendMessage({action: OPEN_OPTIONS});
+        }
+        li.appendChild(a);
         return li;
     }
 

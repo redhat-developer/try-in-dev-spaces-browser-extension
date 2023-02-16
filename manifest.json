@@ -6,6 +6,9 @@
       "id": "{e5b67b9e-a1bd-11ed-a8fc-0242ac120002}"
     }
   },
+  "background": {
+    "service_worker": "backgroundScript.bundle.js"
+  }, 
   "content_scripts": [
     {
       "js": [
