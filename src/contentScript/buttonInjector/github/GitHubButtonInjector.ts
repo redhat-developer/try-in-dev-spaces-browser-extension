@@ -51,7 +51,7 @@ export class GitHubButtonInjector implements ButtonInjector {
     /**
      * @param element the DOM element to inject the button into
      * @param projectUrl the project url
-     * @param endpoints the configured Web IDE endpoint
+     * @param endpoints the configured Dev Spaces endpoint
      */
     private injectButtonNoDropdown(
         element: Element,
@@ -66,7 +66,7 @@ export class GitHubButtonInjector implements ButtonInjector {
         btn.target = "_blank";
         btn.title = "Open the project on " + endpoint.url;
         btn.className = "gh-btn btn-primary";
-        btn.appendChild(document.createTextNode("Web IDE"));
+        btn.appendChild(document.createTextNode("Dev Spaces"));
         btnGroup.appendChild(btn);
         element.appendChild(btnGroup);
     }
@@ -74,7 +74,7 @@ export class GitHubButtonInjector implements ButtonInjector {
     /**
      * @param element the DOM element to inject the button into
      * @param projectUrl the project url
-     * @param endpoints the configured Web IDE endpoints
+     * @param endpoints the configured Dev Spaces endpoints
      */
     private injectButtonDropdown(
         element: Element,
@@ -91,7 +91,7 @@ export class GitHubButtonInjector implements ButtonInjector {
         btn.href = activeEndpoint.url + "/#" + projectUrl;
         btn.target = "_blank";
         btn.title = "Open the project on " + activeEndpoint.url;
-        btn.appendChild(document.createTextNode("Web IDE"));
+        btn.appendChild(document.createTextNode("Dev Spaces"));
         btnGroup.appendChild(btn);
 
         const dropdownBtn = document.createElement("button");

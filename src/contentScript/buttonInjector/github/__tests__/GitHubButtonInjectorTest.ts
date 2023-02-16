@@ -57,7 +57,7 @@ describe('Inject button on GitHub project repo page', () => {
                 target="_blank"
                 title="Open the project on https://url-1.com"
                 class="gh-btn btn-primary"
-                >Web IDE
+                >Dev Spaces
             </a>
             </div>
         </div>`
@@ -83,7 +83,7 @@ describe('Inject button on GitHub project repo page', () => {
             <div class="gh-btn-group ml-2" id="try-in-web-ide-btn">
                 <a class="gh-btn btn-primary"
                     href="https://url-1.com/#https://github.com/redhat-developer/try-in-web-ide-browser-extension"
-                    target="_blank" title="Open the project on https://url-1.com">Web IDE
+                    target="_blank" title="Open the project on https://url-1.com">Dev Spaces
                 </a>
                 <button type="button" class="gh-btn btn-primary gh-dropdown-toggle gh-dropdown-toggle-split">
                 </button>

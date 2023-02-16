@@ -25,7 +25,7 @@ To sideload the extension on Safari, Xcode is required.
 ```
 xcrun safari-web-extension-converter /path/to/dist/folder
 ```
-2. In the Xcode project, set the build target to `Try in Web IDE (macOS)` and start the build by pressing ▶.
+2. In the Xcode project, set the build target to `Try in Dev Spaces (macOS)` and start the build by pressing ▶.
 
 ![Step 2](./images/safari/step-2.png)
 
@@ -41,7 +41,7 @@ xcrun safari-web-extension-converter /path/to/dist/folder
 
 ![Step 5](./images/safari/step-5.png)
 
-6. Enable the `Try in Web IDE` extension from the Safari settings.
+6. Enable the `Try in Dev Spaces` extension from the Safari settings.
 
 ![Step 6](./images/safari/step-6.png)
 
