@@ -14,16 +14,35 @@ Additional Dev Spaces (and upstream Eclipse Che®) instances can configured from
 
  - Access to your data on github.com. This is required to determine the factory url for the button, and for injecting the button element into the webpage.
 
-## Quick start
+## Building and running locally
 
-1. Download dependencies and build the extension. The built extension will be located in the generated `dist` folder.
+The extension can be built for both Chromium based browsers and for Firefox/Safari.
+There are two builds because the two platforms have different manifest V3 definitions.
+
+1. Download dependencies.
 ```
-$ yarn && yarn build
+$ yarn
+```
+
+2. Run the build.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+To build for Chromium-based browsers:
+```
+$ yarn build
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-For development, run `yarn watch` to watch the source files to recompile on changes.
+To build for Firefox or Safari:
+```
+$ yarn build:firefox-safari
+```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Once complete, the built extension will be located in either `dist/chromium` or `dist/firefox-safari`.
 
-2. Sideload the extension located in the `dist` folder into your web browser.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+For development, run `yarn watch` or `yarn watch:firefox-safari` to watch the source files to recompile on changes.
+
+3. Sideload the extension located under the `dist` folder into your web browser.
 For instructions for different web browsers, refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Running tests

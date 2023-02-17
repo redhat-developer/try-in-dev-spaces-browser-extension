@@ -3,7 +3,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const TARGET_FOLDER = 'dist';
+const isFirefoxSafari = process.env.TARGET == 'firefox-safari'
+
+const TARGET_FOLDER = ['dist', isFirefoxSafari ? 'firefox-safari' : 'chromium'];
 const isProduction = process.env.NODE_ENV == 'production';
 
 const stylesHandler = isProduction
@@ -29,7 +31,7 @@ const config = {
   output: {
     filename: '[name].bundle.js',
     clean: true,
-    path: path.resolve(__dirname, TARGET_FOLDER),
+    path: path.resolve(__dirname, ...TARGET_FOLDER),
   },
   devtool: isProduction ? 'source-map' : 'inline-source-map',
   plugins: [
@@ -71,12 +73,24 @@ module.exports = () => {
 };
 
 function copyManifestToDist() {
-  function getModifiedManifest(manifest) {
+  function getModifiedManifest(content) {
+
+    const manifest = JSON.parse(content.toString());
+
+    if (isFirefoxSafari) {
+      // for Firefox/Safari, background scripts are declared in the manifest differently
+      const backgroundScript = manifest.background.service_worker;
+      manifest.background = {scripts: [ backgroundScript ]};
+    } else {
+      // for Chromium based browsers browser_specific_settings is not supported
+      delete manifest['browser_specific_settings'];
+    }
+
     return JSON.stringify(
       {
         description: process.env.npm_package_description,
         version: process.env.npm_package_version,
-        ...JSON.parse(manifest.toString()),
+        ...manifest,
       },
       null,
       isProduction ? null : 2
@@ -87,7 +101,7 @@ function copyManifestToDist() {
     patterns: [
       {
         from: 'manifest.json',
-        to: path.join(__dirname, TARGET_FOLDER),
+        to: path.join(__dirname, ...TARGET_FOLDER),
         force: true,
         transform: function (content, path) {
           return Buffer.from(getModifiedManifest(content));
@@ -102,7 +116,7 @@ function copyIconsToDist() {
     patterns: [
       {
         from: 'src/assets/icons',
-        to: path.join(__dirname, TARGET_FOLDER),
+        to: path.join(__dirname, ...TARGET_FOLDER),
         force: true,
       },
     ],
