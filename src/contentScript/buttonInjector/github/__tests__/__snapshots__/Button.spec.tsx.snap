@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot tests renders correctly with multiple endpoints 1`] = `
+<DocumentFragment>
+  <div
+    class="gh-btn-group ml-2"
+    id="try-in-web-ide-btn"
+  >
+    <a
+      class="gh-btn btn-primary"
+      href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+      target="_blank"
+      title="Open the project on https://url-1.com"
+    >
+      Dev Spaces
+    </a>
+    <button
+      class="gh-btn btn-primary gh-dropdown-toggle gh-dropdown-toggle-split"
+      title="Toggle dropdown"
+      type="button"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Snapshot tests renders correctly with multiple endpoints, with dropdown menu open 1`] = `
+<DocumentFragment>
+  <div
+    class="gh-btn-group ml-2"
+    id="try-in-web-ide-btn"
+  >
+    <a
+      class="gh-btn btn-primary"
+      href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+      target="_blank"
+      title="Open the project on https://url-1.com"
+    >
+      Dev Spaces
+    </a>
+    <button
+      class="gh-btn btn-primary gh-dropdown-toggle gh-dropdown-toggle-split"
+      title="Toggle dropdown"
+      type="button"
+    />
+    <ul
+      class="gh-dropdown-menu"
+      data-popper-escaped="true"
+      data-popper-placement="bottom-end"
+      data-popper-reference-hidden="true"
+      data-testid="dropdown-menu"
+      style="position: absolute; left: 0px; top: 0px; right: 0px; transform: translate(0px, 2px);"
+    >
+      <li
+        class="gh-list-item"
+      >
+        <a
+          class="gh-dropdown-item"
+          href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+        >
+          Open with url-1.com
+          <div
+            class="gh-pill-badge"
+          >
+            Default
+          </div>
+        </a>
+      </li>
+      <li
+        class="gh-list-item"
+      >
+        <a
+          class="gh-dropdown-item"
+          href="https://url-2.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+        >
+          Open with url-2.com
+        </a>
+      </li>
+      <li
+        class="gh-list-item"
+      >
+        <a
+          class="gh-dropdown-item"
+          href="https://url-3.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+        >
+          Open with url-3.com
+        </a>
+      </li>
+      <li>
+        <hr
+          class="gh-dropdown-divider"
+        />
+      </li>
+      <li
+        class="gh-list-item"
+      >
+        <a
+          class="gh-dropdown-item"
+        >
+          Configure
+        </a>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Snapshot tests renders correctly with one endpoint 1`] = `
+<DocumentFragment>
+  <div
+    class="gh-btn-group ml-2"
+    id="try-in-web-ide-btn"
+  >
+    <a
+      class="gh-btn btn-primary"
+      href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+      target="_blank"
+      title="Open the project on https://url-1.com"
+    >
+      Dev Spaces
+    </a>
+    <button
+      class="gh-btn btn-primary gh-dropdown-toggle gh-dropdown-toggle-split"
+      title="Toggle dropdown"
+      type="button"
+    />
+  </div>
+</DocumentFragment>
+`;

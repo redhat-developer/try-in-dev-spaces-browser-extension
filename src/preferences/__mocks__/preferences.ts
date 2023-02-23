@@ -1,15 +1,18 @@
+/*-----------------------------------------------------------------------------------------------
+ *  Copyright (c) Red Hat, Inc. All rights reserved.
+ *  Licensed under the MIT License. See LICENSE file in the project root for license information.
+ *-----------------------------------------------------------------------------------------------*/
+
 import { Endpoint } from '../preferences';
 
 let endpoints: Endpoint[] = []
 
-export function __setEndpoints(_endpoints: Endpoint[]) {
-    endpoints = _endpoints;
+module.exports = {
+    ...(jest.requireActual('../preferences')),
+    getEndpoints: jest.fn(async () => {
+        return endpoints;
+    }),
+    setEndpoints(_endpoints: Endpoint[]) {
+        endpoints = _endpoints;
+    }
 }
-
-export const getCurrentEndpoint = jest.fn(async () => {
-    return endpoints.find(endpoint => endpoint.active);
-});
-
-export const getEndpoints = jest.fn(async () => {
-    return endpoints;
-});

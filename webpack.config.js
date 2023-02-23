@@ -19,13 +19,13 @@ const config = {
       __dirname,
       'src',
       'contentScript',
-      'contentScript.ts'
+      'contentScript'
     ),
     backgroundScript: path.join(
       __dirname,
       'src',
       'backgroundScript',
-      'backgroundScript.ts'
+      'backgroundScript'
     ),
   },
   output: {
@@ -41,6 +41,11 @@ const config = {
   ],
   module: {
     rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"],
+      },
       {
         test: /\.(ts|tsx)$/i,
         loader: 'ts-loader',

@@ -9,16 +9,21 @@ export interface Endpoint {
     readonly: boolean;
 }
 
-const DEFAULT_ENDPOINTS: Endpoint[] = [{ url: 'https://workspaces.openshift.com', active: true, readonly: true }];
-
-export async function getCurrentEndpoint() {
-    const endpoints = await getEndpoints();
-    return endpoints.find(endpoint => endpoint.active);
-}
+const DEFAULT_ENDPOINTS: Endpoint[] = [
+    { url: "https://workspaces.openshift.com", active: true, readonly: true },
+];
 
 export async function getEndpoints(): Promise<Endpoint[]> {
     const res = await chrome.storage.sync.get({
-        endpoints: DEFAULT_ENDPOINTS
+        endpoints: DEFAULT_ENDPOINTS,
     });
     return res.endpoints;
+}
+
+export function getDefaultEndpoint(endpoints: Endpoint[]): Endpoint {
+    const active = endpoints.find((e) => e.active);
+    if (!active) {
+        throw new Error("No endpoint is selected in the extension options.");
+    }
+    return active;
 }
