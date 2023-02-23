@@ -3,15 +3,15 @@
  *  Licensed under the MIT License. See LICENSE file in the project root for license information.
  *-----------------------------------------------------------------------------------------------*/
 
-import { Endpoint } from '../../preferences/preferences';
+import { Endpoint } from "../../preferences/preferences";
 
 export function getProjectURL() {
     const meta = document.querySelector('meta[property="og:url"]');
-    return meta ? meta.getAttribute('content') : undefined;
+    return meta ? meta.getAttribute("content") : undefined;
 }
 
-export function getFactoryUrl(projectUrl: string, endpoint: Endpoint) {
-    return endpoint.url + '/#' + projectUrl;
+export function getFactoryURL(projectURL: string, endpoint: Endpoint) {
+    return endpoint.url + "/#" + projectURL;
 }
 
 export function getHostName(endpoint: Endpoint) {

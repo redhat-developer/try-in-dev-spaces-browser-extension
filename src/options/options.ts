@@ -4,19 +4,19 @@
  *-----------------------------------------------------------------------------------------------*/
 
 // Saves options to chrome.storage
-var preferences = null;
+var preferences:any = null;
 function save_options() {
   chrome.storage.sync.set(preferences, function () {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
-    status.textContent = 'Options saved.';
+    status!.textContent = 'Options saved.';
     setTimeout(function () {
-      status.textContent = '';
+      status!.textContent = '';
     }, 750);
   });
 }
 
-function addEnpoint(parent, endpoint) {
+function addEnpoint(parent: any, endpoint: any) {
   var row = document.createElement('tr');
   parent.appendChild(row);
   row.setAttribute('class', 'row"');
@@ -54,7 +54,7 @@ function refresh() {
   }
 }
 
-function loadPreferences(cb) {
+function loadPreferences(cb: any) {
   chrome.storage.sync.get({
     endpoints: [{url: 'https://workspaces.openshift.com', active:true, readonly: true}]
   }, cb);
@@ -64,7 +64,7 @@ function loadPreferences(cb) {
 // stored in chrome.storage.
 function restore_options() {
   // Use default value color = 'red' and likesColor = true.
-  loadPreferences(function (items) {
+  loadPreferences(function (items: any) {
     preferences = items;
     refresh();
   });
@@ -73,7 +73,7 @@ function restore_options() {
 function newEndpoint() {
   var el = document.getElementById('newEndpoint');
   if (el !== null) {
-    preferences.endpoints.forEach(element => {
+    preferences.endpoints.forEach((element: any) => {
       element.active = false;
     });
     preferences.endpoints.push({ url: (el as HTMLInputElement).value, active: true, readonly: false });
@@ -82,7 +82,7 @@ function newEndpoint() {
   }
 }
 
-function removeEndpoint(endpoint) {
+function removeEndpoint(endpoint: any) {
   var index = preferences.endpoints.indexOf(endpoint);
   preferences.endpoints.splice(index, 1);
   if (endpoint.active) {
@@ -92,20 +92,20 @@ function removeEndpoint(endpoint) {
   save_options();
 }
 
-function setActive(endpoint) {
-  preferences.endpoints.forEach(element => element.active = false);
+function setActive(endpoint: any) {
+  preferences.endpoints.forEach((element: any) => element.active = false);
   endpoint.active = true;
   refresh();
   save_options();
 }
 
-export function getSelectedEnpoint(cb) {
+export function getSelectedEnpoint(cb: any) {
   if (preferences) {
-    cb(preferences.endpoints.filter(element => element.active)[0].url);
+    cb(preferences.endpoints.filter((element: any) => element.active)[0].url);
   } else {
-    loadPreferences(items => {
+    loadPreferences((items: any) => {
       preferences = items;
-      cb(preferences.endpoints.filter(element => element.active)[0].url);
+      cb(preferences.endpoints.filter((element: any) => element.active)[0].url);
     });
   }
 }

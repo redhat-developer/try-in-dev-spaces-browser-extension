@@ -70,10 +70,6 @@
     opacity: 0.8;
 }
 
-.gh-dropdown-menu[data-show] {
-    display: block;
-}
-
 .gh-dropdown-menu {
     background-clip: padding-box;
     background-color: var(--color-canvas-overlay);
@@ -89,7 +85,7 @@
     min-width: 160px;
     max-width: 400px;
     z-index: 100;
-    display: none;
+    display: block;
 }
 
 .gh-dropdown-menu:after {
@@ -161,6 +157,14 @@
     border-radius: 50rem;
     -webkit-user-select: none;
     user-select: none;
+}
+
+.gh-dropdown-divider {
+    height: 0;
+    margin: 0.2rem 0;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-border-muted, hsla(210,18%,87%,1));
+    opacity: 1;
 }
 
 .gh-dropdown-divider {

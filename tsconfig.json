@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "jsx": "react-jsx",
+    "module": "esnext",
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
     "moduleResolution": "node",
     "outDir": "./dist",
-    "rootDir": "."
+    "rootDir": ".",
+    "noEmit": false,
+    "target": "es5",
+    "esModuleInterop": true,
   },
   "include": [
     "src"
