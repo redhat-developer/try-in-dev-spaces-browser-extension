@@ -1,0 +1,52 @@
+.pf-c-card {
+    --pf-c-card__title--FontWeight: var(--pf-global--FontWeight--normal) !important;
+    --pf-c-card__title--not--last-child--PaddingBottom: var(--pf-global--spacer--sm) !important;
+    --pf-c-card__title--FontSize: var(--pf-global--FontSize--3xl) !important;
+    --pf-c-card--first-child--PaddingTop: var(--pf-global--spacer--md) !important;
+    --pf-c-card--child--PaddingBottom: var(--pf-global--spacer--xl) !important;
+    --pf-c-card--child--PaddingRight: var(--pf-global--spacer--xl) !important;
+    --pf-c-card--child--PaddingLeft: var(--pf-global--spacer--xl) !important;
+    height: 100%;
+}
+
+/* styling the list of endpoints */
+.pf-c-simple-list {
+    --pf-c-simple-list__item-link--PaddingLeft: 0 !important;
+
+    /* disable hover background change */
+    --pf-c-simple-list__item-link--hover--BackgroundColor: var(--pf-global--BackgroundColor--light-100) !important;
+    --pf-c-simple-list__item-link--Color: var(--pf-global--Color--100) !important;
+
+    /* disable styles when list item is clicked on */
+    --pf-c-simple-list__item-link--m-current--BackgroundColor: var(--pf-global--BackgroundColor--light-100) !important;
+    --pf-c-simple-list__item-link--m-current--Color: var(--pf-global--Color--100) !important;
+    --pf-c-simple-list__item-link--active--BackgroundColor: var(--pf-global--BackgroundColor--light-100) !important;
+    --pf-c-simple-list__item-link--active--Color: var(--pf-global--Color--100) !important;
+    --pf-c-simple-list__item-link--FontSize: var(--pf-global--FontSize--md) !important;
+}
+
+/* styling the dropdown menu button */
+.pf-c-dropdown {
+    --pf-c-dropdown__toggle--PaddingTop: 0 !important;
+    --pf-c-dropdown__toggle--PaddingRight: 0 !important;
+    --pf-c-dropdown__toggle--PaddingBottom: 0 !important;
+    --pf-c-dropdown__toggle--PaddingLeft: 0 !important;
+    --pf-c-dropdown__toggle--before--BorderWidth: 0 !important;
+    --pf-c-dropdown--m-expanded__toggle--before--BorderBottomWidth: 0 !important;
+    --pf-c-dropdown__toggle--focus--before--BorderBottomWidth: 0 !important;
+    --pf-c-dropdown__toggle--active--before--BorderBottomWidth: 0 !important;
+    --pf-c-dropdown__toggle--Color: var(--pf-global--palette--black-600) !important;
+}
+
+.pf-c-simple-list__item-link {
+    cursor: default;
+}
+
+.form-text-input {
+    width: 100%;
+}
+
+.form-fill {
+    width: var(--pf-global--spacer--sm);
+}
+

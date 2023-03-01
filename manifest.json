@@ -12,7 +12,6 @@
   "content_scripts": [
     {
       "js": [
-        "options.bundle.js",
         "contentScript.bundle.js"
       ],
       "matches": [

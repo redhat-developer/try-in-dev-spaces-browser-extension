@@ -20,6 +20,10 @@ export async function getEndpoints(): Promise<Endpoint[]> {
     return res.endpoints;
 }
 
+export async function saveEndpoints(endpoints: Endpoint[]): Promise<void> {
+    return chrome.storage.sync.set({ endpoints });
+}
+
 export function getDefaultEndpoint(endpoints: Endpoint[]): Endpoint {
     const active = endpoints.find((e) => e.active);
     if (!active) {
