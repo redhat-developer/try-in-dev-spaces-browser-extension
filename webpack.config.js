@@ -14,7 +14,7 @@ const stylesHandler = isProduction
 
 const config = {
   entry: {
-    options: path.join(__dirname, 'src', 'options', 'options.ts'),
+    options: path.join(__dirname, 'src', 'options', 'options'),
     contentScript: path.join(
       __dirname,
       'src',

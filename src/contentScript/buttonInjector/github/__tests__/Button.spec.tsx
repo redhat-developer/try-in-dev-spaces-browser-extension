@@ -4,12 +4,13 @@
  *-----------------------------------------------------------------------------------------------*/
 
 import { act } from "react-dom/test-utils";
-import { render, screen, waitFor, getAllByRole } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import { Button } from "../Button";
 
-const projectURL = "https://github.com/redhat-developer/try-in-dev-spaces-browser-extension";
+const projectURL =
+    "https://github.com/redhat-developer/try-in-dev-spaces-browser-extension";
 
 describe("Snapshot tests", () => {
     it("renders correctly with one endpoint", () => {
@@ -116,7 +117,7 @@ describe("Functional tests", () => {
         await openDropdownMenu();
 
         const dropdownMenu = screen.getByTestId("dropdown-menu");
-        expect(dropdownMenu.querySelectorAll('a').length).toEqual(
+        expect(dropdownMenu.querySelectorAll("a")).toHaveLength(
             endpoints.length + 1
         );
     });
@@ -135,7 +136,7 @@ describe("Functional tests", () => {
         await openDropdownMenu();
 
         const dropdownMenu = screen.getByTestId("dropdown-menu");
-        expect(dropdownMenu.querySelectorAll('a').length).toEqual(
+        expect(dropdownMenu.querySelectorAll("a")).toHaveLength(
             endpoints.length + 1
         );
     });
@@ -156,7 +157,9 @@ describe("Functional tests", () => {
             configureBtn.click();
         });
 
-        expect(chrome.runtime.sendMessage).toBeCalledWith({"action": "openOptionsPage"});
+        expect(chrome.runtime.sendMessage).toBeCalledWith({
+            action: "openOptionsPage",
+        });
     });
 });
 
