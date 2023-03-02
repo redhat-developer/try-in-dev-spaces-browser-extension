@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See LICENSE file in the project root for license information.
  *-----------------------------------------------------------------------------------------------*/
 
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import { App } from "../App";
@@ -84,4 +84,36 @@ it("should have only one default label", async () => {
     const { findAllByText } = render(<App />);
     const items = await findAllByText("Default");
     expect(items).toHaveLength(1);
+});
+
+it("should enable 'Add' button when a valid URL is entered in the input box", async () => {
+    preferencesMock.setEndpoints([
+        { url: "https://url-1.com", active: true, readonly: true },
+    ]);
+
+    const { findByPlaceholderText, findByText } = render(<App />);
+    const inputBox = await findByPlaceholderText("Add endpoint");
+    const addButton = (await findByText("Add")).closest("button");
+
+    fireEvent.change(inputBox, {target: {value: "https://my-che-instance.che"}})
+    expect(addButton.classList.contains("pf-m-disabled")).toBe(false);
+});
+
+it("should disable 'Add' button when invalid input is entered in the input box", async () => {
+    preferencesMock.setEndpoints([
+        { url: "https://url-1.com", active: true, readonly: true },
+    ]);
+
+    const { findByPlaceholderText, findByText } = render(<App />);
+    const inputBox = await findByPlaceholderText("Add endpoint");
+    const addButton = (await findByText("Add")).closest("button");
+
+    fireEvent.change(inputBox, {target: {value: "    "}})
+    expect(addButton.classList.contains("pf-m-disabled")).toBe(true);
+
+    fireEvent.change(inputBox, {target: {value: "invalidtext"}})
+    expect(addButton.classList.contains("pf-m-disabled")).toBe(true);
+
+    fireEvent.change(inputBox, {target: {value: "123412341234"}})
+    expect(addButton.classList.contains("pf-m-disabled")).toBe(true);
 });
