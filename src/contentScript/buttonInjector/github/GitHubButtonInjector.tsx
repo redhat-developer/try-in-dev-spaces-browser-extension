@@ -24,7 +24,22 @@ export class GitHubButtonInjector implements ButtonInjector {
         const actionBar = document.querySelector(
             GitHubButtonInjector.GITHUB_ELEMENT
         );
-        return !!actionBar;
+        
+        if (!actionBar) {
+            return false;
+        }
+
+        return this.codeBtnExists(actionBar);
+    }
+
+    private static codeBtnExists(element: Element): boolean {
+        const btnList = element.getElementsByClassName("btn-primary btn");
+        for (const btn of btnList) {
+            if ((btn as HTMLElement).innerText.indexOf("Code") > -1) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public async inject() {
