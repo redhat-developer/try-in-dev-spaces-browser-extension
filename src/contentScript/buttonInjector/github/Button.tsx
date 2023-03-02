@@ -100,7 +100,7 @@ export const Button = (props: Props) => {
                 className="gh-btn btn-primary"
                 href={getFactoryURL(props.projectURL, defaultEndpoint)}
                 target="_blank"
-                title="Open the project on https://url-1.com"
+                title={"Open the project on " + defaultEndpoint.url}
             >
                 Dev Spaces
             </a>

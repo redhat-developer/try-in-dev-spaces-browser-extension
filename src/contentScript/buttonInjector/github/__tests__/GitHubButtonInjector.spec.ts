@@ -18,6 +18,60 @@ jest.mock("../../util", () => ({
     }),
 }));
 
+describe("Test GitHubButtonInjector.matches()", () => {
+
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it("should return true if div has 'Code' button", async () => {
+        preferencesMock.setEndpoints([
+            { url: "https://url-1.com", active: true, readonly: true },
+        ]);
+
+        jest.spyOn(document, "querySelector").mockImplementation(
+            (_: string) => {
+                const div = document.createElement("div");
+                div.className = "file-navigation";
+                const codeBtn = document.createElement("summary");
+                codeBtn.className = "btn-primary btn";
+                codeBtn.innerText = "Code";
+                div.appendChild(codeBtn);
+                return div;
+            }
+        );
+        expect(GitHubButtonInjector.matches()).toBe(true);
+    });
+
+    it("should return false if div does not have 'Code' button", async () => {
+        preferencesMock.setEndpoints([
+            { url: "https://url-1.com", active: true, readonly: true },
+        ]);
+
+        jest.spyOn(document, "querySelector").mockImplementation(
+            (_: string) => {
+                const div = document.createElement("div");
+                div.className = "file-navigation";
+                return div;
+            }
+        );
+        expect(GitHubButtonInjector.matches()).toBe(false);
+    });
+
+    it("should return false if div not found", async () => {
+        preferencesMock.setEndpoints([
+            { url: "https://url-1.com", active: true, readonly: true },
+        ]);
+
+        jest.spyOn(document, "querySelector").mockImplementation(
+            (_: string) => {
+                return null;
+            }
+        );
+        expect(GitHubButtonInjector.matches()).toBe(false);
+    });
+});
+
 describe("Inject button on GitHub project repo page", () => {
     let githubService: GitHubButtonInjector;
 
@@ -72,6 +126,10 @@ describe("Inject button on GitHub project repo page", () => {
             (_: string) => {
                 const div = document.createElement("div");
                 div.className = "file-navigation";
+                const codeBtn = document.createElement("summary");
+                codeBtn.className = "btn-primary btn";
+                codeBtn.innerText = "Code";
+                div.appendChild(codeBtn);
                 return div;
             }
         );

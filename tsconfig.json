@@ -9,7 +9,7 @@
     "outDir": "./dist",
     "rootDir": ".",
     "noEmit": false,
-    "target": "es5",
+    "target": "es2015",
     "esModuleInterop": true,
   },
   "include": [
