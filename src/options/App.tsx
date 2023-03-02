@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import "@patternfly/react-core/dist/styles/base.css";
 import "@patternfly/patternfly/utilities/Spacing/spacing.css";
 import "@patternfly/patternfly/utilities/Float/float.css";
-import "./styles/App.css";
 
 import {
     Button,
@@ -29,6 +28,7 @@ import {
     saveEndpoints,
 } from "../preferences/preferences";
 import { EndpointsList } from "./EndpointsList";
+import "./styles/App.css";
 
 export const App = () => {
     const [endpoints, setEndpoints] = useState<Endpoint[]>([]);
