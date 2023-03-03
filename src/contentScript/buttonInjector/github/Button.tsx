@@ -7,7 +7,7 @@ import React from "react";
 import { usePopper } from "react-popper";
 import { OPEN_OPTIONS } from "../../../backgroundScript/backgroundScript";
 
-import { Endpoint, getDefaultEndpoint } from "../../../preferences/preferences";
+import { Endpoint, getActiveEndpoint } from "../../../preferences/preferences";
 import { getFactoryURL } from "../util";
 import { DropdownItem } from "./DropdownItem";
 import { DropdownMenu, DropdownMenuDivider } from "./DropdownMenu";
@@ -92,7 +92,7 @@ export const Button = (props: Props) => {
         </DropdownMenu>
     );
 
-    const defaultEndpoint = getDefaultEndpoint(props.endpoints);
+    const defaultEndpoint = getActiveEndpoint(props.endpoints);
 
     return (
         <div className="gh-btn-group ml-2" id="try-in-web-ide-btn">

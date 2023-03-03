@@ -6,7 +6,7 @@
 import ReactDOM from "react-dom/client";
 import {
     Endpoint,
-    getDefaultEndpoint,
+    getActiveEndpoint,
     getEndpoints,
 } from "../../../preferences/preferences";
 import { ButtonInjector } from "../ButtonInjector";
@@ -96,7 +96,7 @@ export class GitHubButtonInjector implements ButtonInjector {
     }
 
     private setActiveEndpointToFront(endpoints: Endpoint[]) {
-        const active = getDefaultEndpoint(endpoints);
+        const active = getActiveEndpoint(endpoints);
         endpoints.splice(
             endpoints.findIndex((e) => e.active),
             1
