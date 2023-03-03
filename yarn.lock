@@ -587,7 +587,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.3"
 
-"@babel/plugin-syntax-flow@^7.18.6":
+"@babel/plugin-syntax-flow@^7.14.5", "@babel/plugin-syntax-flow@^7.18.6":
   version "7.18.6"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-flow/-/plugin-syntax-flow-7.18.6.tgz#774d825256f2379d06139be0c723c4dd444f3ca1"
   integrity sha512-LUbR+KNTBWCUAqRG9ex5Gnzu2IOkt8jRJbHHXFT9q+L9zm7M/QQbEqXyw1n1pohYvOyWC8CjeyjrSaIwiYjK7A==
@@ -899,7 +899,7 @@
   dependencies:
     "@babel/plugin-transform-react-jsx" "^7.18.6"
 
-"@babel/plugin-transform-react-jsx@^7.18.6":
+"@babel/plugin-transform-react-jsx@^7.14.9", "@babel/plugin-transform-react-jsx@^7.18.6":
   version "7.21.0"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx/-/plugin-transform-react-jsx-7.21.0.tgz#656b42c2fdea0a6d8762075d58ef9d4e3c4ab8a2"
   integrity sha512-6OAWljMvQrZjR2DaNhVfRz6dkCAVV+ymcLUmaf8bccGOHn2v5rHJK3tTpij0BuhdYWP4LLaqj5lwcdlpAAPuvg==
@@ -2634,7 +2634,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.18.tgz#8dfb97f0da23c2293e554c5a50d61ef134d7697f"
   integrity sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==
 
-"@types/node@^15.6.1":
+"@types/node@^15.6.1", "@types/node@^15.6.2":
   version "15.14.9"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-15.14.9.tgz#bc43c990c3c9be7281868bbc7b8fdd6e2b57adfa"
   integrity sha512-qjd88DrCxupx/kJD5yQgZdcYKZKSIGBVDIBE1/LTGcNm3d2Np/jxojkdePDdfnBHJc5W7vSMpbJ1aB7p/Py69A==
@@ -6783,6 +6783,11 @@ isbinaryfile@^4.0.10, isbinaryfile@^4.0.8:
   resolved "https://registry.yarnpkg.com/isbinaryfile/-/isbinaryfile-4.0.10.tgz#0c5b5e30c2557a2f06febd37b7322946aaee42b3"
   integrity sha512-iHrqe5shvBUcFbmZq9zOQHBoeOhZJu6RQGrDpBgenUm/Am+F3JM2MgQj+rK3Z601fzrL5gLZWtAPH2OBaSVcyw==
 
+isbinaryfile@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/isbinaryfile/-/isbinaryfile-5.0.0.tgz#034b7e54989dab8986598cbcea41f66663c65234"
+  integrity sha512-UDdnyGvMajJUWCkib7Cei/dvyJrrvo4FIrsvSFWdPpXSUorzXrDJ0S+X5Q4ZlasfPjca4yqCNNsjbCeiy8FFeg==
+
 isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
@@ -8178,12 +8183,38 @@ media-typer@0.3.0:
     normalize-path "^3.0.0"
     textextensions "^5.13.0"
 
+mem-fs-editor@^9.0.0:
+  version "9.7.0"
+  resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-9.7.0.tgz#dbb458b8acb885c84013645e93f71aa267a7fdf6"
+  integrity sha512-ReB3YD24GNykmu4WeUL/FDIQtkoyGB6zfJv60yfCo3QjKeimNcTqv2FT83bP0ccs6uu+sm5zyoBlspAzigmsdg==
+  dependencies:
+    binaryextensions "^4.16.0"
+    commondir "^1.0.1"
+    deep-extend "^0.6.0"
+    ejs "^3.1.8"
+    globby "^11.1.0"
+    isbinaryfile "^5.0.0"
+    minimatch "^7.2.0"
+    multimatch "^5.0.0"
+    normalize-path "^3.0.0"
+    textextensions "^5.13.0"
+
 "mem-fs@^1.2.0 || ^2.0.0":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/mem-fs/-/mem-fs-2.2.1.tgz#c87bc8a53fb17971b129d4bcd59a9149fb78c5b1"
   integrity sha512-yiAivd4xFOH/WXlUi6v/nKopBh1QLzwjFi36NK88cGt/PRXI8WeBASqY+YSjIVWvQTx3hR8zHKDBMV6hWmglNA==
   dependencies:
     "@types/node" "^15.6.1"
+    "@types/vinyl" "^2.0.4"
+    vinyl "^2.0.1"
+    vinyl-file "^3.0.0"
+
+mem-fs@^2.0.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/mem-fs/-/mem-fs-2.3.0.tgz#d38bdd729ab0316bfb56d0d0ff669f91e7078463"
+  integrity sha512-GftCCBs6EN8sz3BoWO1bCj8t7YBtT713d8bUgbhg9Iel5kFSqnSvCK06TYIDJAtJ51cSiWkM/YemlT0dfoFycw==
+  dependencies:
+    "@types/node" "^15.6.2"
     "@types/vinyl" "^2.0.4"
     vinyl "^2.0.1"
     vinyl-file "^3.0.0"
@@ -8273,6 +8304,13 @@ minimatch@^5.0.1:
   version "5.1.6"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.6.tgz#1cfcb8cf5522ea69952cd2af95ae09477f122a96"
   integrity sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==
+  dependencies:
+    brace-expansion "^2.0.1"
+
+minimatch@^7.2.0:
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-7.4.2.tgz#157e847d79ca671054253b840656720cb733f10f"
+  integrity sha512-xy4q7wou3vUoC9k1xGTXc+awNdGaGVHtFUaey8tiX4H1QRc04DZ/rmDFwNm2EBsuYEhAZ6SgMmYf3InGY6OauA==
   dependencies:
     brace-expansion "^2.0.1"
 
