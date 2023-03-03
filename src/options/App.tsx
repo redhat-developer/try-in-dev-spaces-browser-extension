@@ -38,12 +38,13 @@ export const App = () => {
     const [newEndpointStatus, setNewEndpointStatus] = useState<validate>("default");
 
     useEffect(() => {
-        const fetchData = async () => {
-            const endpoints = await getEndpoints();
-            setEndpoints(endpoints);
-        };
-        fetchData().catch(console.error);
+        updateEndpoints().catch(console.error);
     }, []);
+
+    const updateEndpoints = async () => {
+        const endpoints = await getEndpoints();
+        setEndpoints(endpoints);
+    }
 
     const handleNewEndpointUrlChange = (newUrl: string, _event: React.FormEvent<HTMLInputElement>) => {
         setNewEndpointUrl(newUrl);
@@ -73,7 +74,7 @@ export const App = () => {
             readonly: false,
         });
         await saveEndpoints(newEndpoints);
-        await setEndpoints(newEndpoints);
+        await updateEndpoints();
         setNewEndpointUrl("");
         setNewEndpointStatus("default");
     };
@@ -92,13 +93,14 @@ export const App = () => {
             e.active = e == endpoint;
         });
         await saveEndpoints(newEndpoints);
-        await setEndpoints(newEndpoints);
+        await updateEndpoints();
+
     };
 
     const deleteEndpoint = async (endpoint: Endpoint) => {
         const newEndpoints = endpoints.filter((e) => e != endpoint);
         await saveEndpoints(newEndpoints);
-        await setEndpoints(newEndpoints);
+        await updateEndpoints();
     };
 
     const list = endpoints.length && (
