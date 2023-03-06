@@ -56,6 +56,7 @@ exports[`Snapshot tests renders correctly with multiple endpoints, with dropdown
         <a
           class="gh-dropdown-item"
           href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+          target="_blank"
         >
           Open with url-1.com
           <div
@@ -71,6 +72,7 @@ exports[`Snapshot tests renders correctly with multiple endpoints, with dropdown
         <a
           class="gh-dropdown-item"
           href="https://url-2.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+          target="_blank"
         >
           Open with url-2.com
         </a>
@@ -81,6 +83,7 @@ exports[`Snapshot tests renders correctly with multiple endpoints, with dropdown
         <a
           class="gh-dropdown-item"
           href="https://url-3.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+          target="_blank"
         >
           Open with url-3.com
         </a>

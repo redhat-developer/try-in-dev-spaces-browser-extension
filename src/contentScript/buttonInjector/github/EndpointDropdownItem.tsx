@@ -17,7 +17,7 @@ export const EndpointDropdownItem = (props: Props) => {
     const text = `Open with ${getHostName(props.endpoint)}`;
 
     return (
-        <DropdownItem href={href}>
+        <DropdownItem href={href} newTab>
             {text}
             {props.endpoint.active && (
                 <div className="gh-pill-badge">Default</div>

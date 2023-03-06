@@ -8,6 +8,7 @@ import { PropsWithChildren } from "react";
 interface Props {
     href?: string;
     onClick?: React.MouseEventHandler;
+    newTab?: boolean;
 }
 
 export const DropdownItem = (props: PropsWithChildren<Props>) => {
@@ -27,6 +28,9 @@ const getAttributes = (props: Props): any => {
     }
     if (props.onClick) {
         attr.onClick = props.onClick;
+    }
+    if (props.newTab) {
+        attr.target = "_blank"
     }
     return attr;
 };
