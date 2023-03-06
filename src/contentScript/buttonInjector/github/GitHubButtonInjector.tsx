@@ -17,6 +17,8 @@ export class GitHubButtonInjector implements ButtonInjector {
     private static BUTTON_ID = "try-in-web-ide-btn";
     private static GITHUB_ELEMENT = ".file-navigation";
 
+    private root: ReactDOM.Root | undefined;
+
     /**
      * @returns true if current page is a GitHub page to inject the button to
      */
@@ -51,6 +53,9 @@ export class GitHubButtonInjector implements ButtonInjector {
         document.addEventListener("turbo:load", () => {
             if (GitHubButtonInjector.matches()) {
                 this._inject();
+            } else if (this.root) {
+                this.root.unmount();
+                this.root = undefined;
             }
         });
     }
@@ -64,9 +69,8 @@ export class GitHubButtonInjector implements ButtonInjector {
 
         const rootElement = document.createElement("div");
         rootElement.id = GitHubButtonInjector.BUTTON_ID;
-        const root = ReactDOM.createRoot(rootElement);
-
-        root.render(<Button endpoints={endpoints} projectURL={projectURL} />);
+        this.root = ReactDOM.createRoot(rootElement);
+        this.root.render(<Button endpoints={endpoints} projectURL={projectURL} />);
         ghElement.appendChild(rootElement);
     }
 

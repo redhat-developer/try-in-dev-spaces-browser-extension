@@ -163,4 +163,48 @@ describe("Inject button on GitHub project repo page", () => {
             expect(mockRoot.render).toBeCalledTimes(2)
         });
     });
+
+    it("should unmount previous btn on turbo:load event and if no btn should be injected", async () => {
+        preferencesMock.setEndpoints([
+            { url: "https://url-1.com", active: true, readonly: true },
+        ]);
+
+        const mockRoot = {
+            render: jest.fn(),
+            unmount: jest.fn(),
+        };
+
+        jest.spyOn(ReactDOM, "createRoot").mockImplementation((_: any) => {
+            return mockRoot as any;
+        });
+
+        jest.spyOn(document, "querySelector").mockImplementation(
+            (_: string) => {
+                return document.createElement("div");
+            }
+        );
+
+        const addEventListenerSpy = jest.spyOn(document, "addEventListener");
+        let turboCallback;
+        addEventListenerSpy.mockImplementationOnce(
+            (event: string, callback) => {
+                turboCallback = () => {
+                    (callback as EventListener)(new Event(event));
+                };
+            }
+        );
+
+        await githubService.inject();
+
+        // No button should be injected
+        jest.spyOn(GitHubButtonInjector, "matches").mockImplementationOnce(() => {
+            return false;
+        });
+
+        // when turbo:load event happens and the button should not be injected,
+        // previous button should be unmounted
+        expect(mockRoot.unmount).not.toBeCalled();
+        turboCallback();
+        expect(mockRoot.unmount).toBeCalledTimes(1);
+    });
 });
