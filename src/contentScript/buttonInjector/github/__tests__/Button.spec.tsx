@@ -4,7 +4,7 @@
  *-----------------------------------------------------------------------------------------------*/
 
 import { act } from "react-dom/test-utils";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, RenderResult, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import { Button } from "../Button";
@@ -54,6 +54,11 @@ describe("Snapshot tests", () => {
 });
 
 describe("Functional tests", () => {
+
+    afterEach(() => {
+        jest.resetAllMocks();
+    });
+
     it("should have correct href for main button", async () => {
         let endpoints = [
             { url: "https://url-1.com", active: true, readonly: true },
@@ -160,6 +165,32 @@ describe("Functional tests", () => {
         expect(chrome.runtime.sendMessage).toBeCalledWith({
             action: "openOptionsPage",
         });
+    });
+
+    it("should remove click event listener on component unmount", async () => {
+        const endpoints = [
+            { url: "https://url-1.com", active: true, readonly: true },
+        ];
+
+        const addListenerSpy = jest.spyOn(window, "addEventListener");
+        const removeListenerSpy = jest.spyOn(window, "removeEventListener");
+
+        let renderResult: RenderResult;
+        act(() => {
+            renderResult = render(
+                <Button endpoints={endpoints} projectURL={projectURL} />
+            );
+        });
+
+        expect(addListenerSpy).toBeCalledWith(
+            "click",
+            expect.any(Function)
+        );
+        renderResult.unmount();
+        expect(removeListenerSpy).toBeCalledWith(
+            "click",
+            expect.any(Function)
+        );
     });
 });
 
