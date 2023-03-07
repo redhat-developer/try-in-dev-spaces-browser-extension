@@ -21,7 +21,8 @@ import {
     TextInput,
     CardTitle,
 } from "@patternfly/react-core";
-import { ExclamationCircleIcon } from "@patternfly/react-icons";
+import { ExclamationCircleIcon } from "@patternfly/react-icons/dist/js/icons/exclamation-circle-icon";
+
 import {
     Endpoint,
     getEndpoints,
@@ -33,9 +34,10 @@ import "./styles/App.css";
 export const App = () => {
     const [endpoints, setEndpoints] = useState<Endpoint[]>([]);
     const [newEndpointUrl, setNewEndpointUrl] = useState<string>("");
-    
+
     type validate = "success" | "error" | "default";
-    const [newEndpointStatus, setNewEndpointStatus] = useState<validate>("default");
+    const [newEndpointStatus, setNewEndpointStatus] =
+        useState<validate>("default");
 
     useEffect(() => {
         updateEndpoints().catch(console.error);
@@ -44,16 +46,19 @@ export const App = () => {
     const updateEndpoints = async () => {
         const endpoints = await getEndpoints();
         setEndpoints(endpoints);
-    }
+    };
 
-    const handleNewEndpointUrlChange = (newUrl: string, _event: React.FormEvent<HTMLInputElement>) => {
+    const handleNewEndpointUrlChange = (
+        newUrl: string,
+        _event: React.FormEvent<HTMLInputElement>
+    ) => {
         setNewEndpointUrl(newUrl);
         if (newUrl === "") {
-          setNewEndpointStatus("default");
+            setNewEndpointStatus("default");
         } else if (isUrl(newUrl)) {
-          setNewEndpointStatus("success");
+            setNewEndpointStatus("success");
         } else {
-          setNewEndpointStatus("error");
+            setNewEndpointStatus("error");
         }
     };
 
@@ -64,7 +69,7 @@ export const App = () => {
             return false;
         }
         return true;
-    }
+    };
 
     const addNewEndpoint = async () => {
         const sanitizedEndpoint = sanitizeEndpoint(newEndpointUrl);
@@ -85,7 +90,7 @@ export const App = () => {
             res = res.substring(0, res.length - 1);
         }
         return res;
-    }
+    };
 
     const setDefault = async (endpoint: Endpoint) => {
         const newEndpoints = [...endpoints];
@@ -94,7 +99,6 @@ export const App = () => {
         });
         await saveEndpoints(newEndpoints);
         await updateEndpoints();
-
     };
 
     const deleteEndpoint = async (endpoint: Endpoint) => {
@@ -111,6 +115,23 @@ export const App = () => {
         />
     );
 
+    const helperTextInvalid = (
+        <Split className="pf-u-mt-xs">
+            <SplitItem>
+                <ExclamationCircleIcon
+                    color="var(--pf-global--danger-color--100)"
+                    className="pf-u-mr-xs"
+                />
+            </SplitItem>
+            <SplitItem>
+                <div className="pf-c-form__helper-text pf-m-error">
+                    Provide the URL of your Dev Spaces installation, e.g.,
+                    https://devspaces.mycluster.redhat.com
+                </div>
+            </SplitItem>
+        </Split>
+    );
+
     return (
         <Card>
             <CardTitle>Dev Spaces endpoints</CardTitle>
@@ -122,8 +143,11 @@ export const App = () => {
                         <Form>
                             <FormGroup
                                 validated={newEndpointStatus}
-                                helperTextInvalid="The new endpoint must be a URL"
-                                helperTextInvalidIcon={<ExclamationCircleIcon />}>
+                                helperTextInvalid={helperTextInvalid}
+                                helperTextInvalidIcon={
+                                    <ExclamationCircleIcon />
+                                }
+                            >
                                 <TextInput
                                     type="text"
                                     aria-label="new endpoint"
@@ -137,7 +161,14 @@ export const App = () => {
                     </SplitItem>
                     <SplitItem className="form-fill" isFilled></SplitItem>
                     <SplitItem>
-                        <Button variant="primary" onClick={addNewEndpoint} isDisabled={newEndpointUrl.length === 0 || newEndpointStatus === "error"}>
+                        <Button
+                            variant="primary"
+                            onClick={addNewEndpoint}
+                            isDisabled={
+                                newEndpointUrl.length === 0 ||
+                                newEndpointStatus === "error"
+                            }
+                        >
                             Add
                         </Button>
                     </SplitItem>

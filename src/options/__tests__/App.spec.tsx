@@ -117,3 +117,14 @@ it("should disable 'Add' button when invalid input is entered in the input box",
     fireEvent.change(inputBox, {target: {value: "123412341234"}})
     expect(addButton.classList.contains("pf-m-disabled")).toBe(true);
 });
+
+it("should display error message when invalid input is entered in the input box", async () => {
+    preferencesMock.setEndpoints([
+        { url: "https://url-1.com", active: true, readonly: true },
+    ]);
+
+    const { findByPlaceholderText, findByText } = render(<App />);
+    const inputBox = await findByPlaceholderText("Add endpoint");
+    fireEvent.change(inputBox, {target: {value: "invalidtext"}})
+    await findByText("Provide the URL of your Dev Spaces installation, e.g., https://devspaces.mycluster.redhat.com");
+});

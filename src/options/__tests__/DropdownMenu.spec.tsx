@@ -4,7 +4,7 @@
  *-----------------------------------------------------------------------------------------------*/
 
 import { act } from "react-dom/test-utils";
-import { Matcher, MatcherOptions, render, waitFor } from "@testing-library/react";
+import { Matcher, MatcherOptions, render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import { DropdownMenu } from "../DropdownMenu";
