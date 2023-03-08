@@ -8,9 +8,9 @@ import {
     DropdownItem,
     DropdownPosition,
     DropdownToggle,
-} from "@patternfly/react-core";
+} from "@patternfly/react-core/components/Dropdown";
 import { useState } from "react";
-import { EllipsisVIcon } from "@patternfly/react-icons";
+import { EllipsisVIcon } from "@patternfly/react-icons/dist/js/icons/ellipsis-v-icon";
 
 interface Props {
     onClickSetDefault: () => void;
