@@ -3,14 +3,11 @@
  *  Licensed under the MIT License. See LICENSE file in the project root for license information.
  *-----------------------------------------------------------------------------------------------*/
 
-import {
-    Split,
-    SplitItem,
-    Label,
-    SimpleList,
-    SimpleListItem,
-    Truncate,
-} from "@patternfly/react-core";
+import { Split, SplitItem } from "@patternfly/react-core/layouts/Split";
+import { Label } from "@patternfly/react-core/components/Label";
+import { SimpleList, SimpleListItem } from "@patternfly/react-core/components/SimpleList";
+import { Truncate } from "@patternfly/react-core/components/Truncate";
+
 import { Endpoint } from "../preferences/preferences";
 import { DropdownMenu } from "./DropdownMenu";
 

@@ -9,20 +9,17 @@ import "@patternfly/react-core/dist/styles/base.css";
 import "@patternfly/patternfly/utilities/Spacing/spacing.css";
 import "@patternfly/patternfly/utilities/Float/float.css";
 
+import { Button } from "@patternfly/react-core/components/Button";
 import {
-    Button,
     Card,
     CardBody,
-    Divider,
-    Split,
-    SplitItem,
-    Form,
-    FormGroup,
-    TextInput,
     CardTitle,
-} from "@patternfly/react-core";
+} from "@patternfly/react-core/components/Card";
+import { Divider } from "@patternfly/react-core/components/Divider";
+import { Split, SplitItem } from "@patternfly/react-core/layouts/Split";
+import { Form, FormGroup } from "@patternfly/react-core/components/Form";
+import { TextInput } from "@patternfly/react-core/components/Textinput";
 import { ExclamationCircleIcon } from "@patternfly/react-icons/dist/js/icons/exclamation-circle-icon";
-
 import {
     Endpoint,
     getEndpoints,

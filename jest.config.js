@@ -6,7 +6,11 @@ module.exports = {
     ],
     transform: {
         "^.+\\.(ts|tsx)$": "ts-jest",
+        "^.+\\.(js|jsx)$": "babel-jest"
     },
+    transformIgnorePatterns: [
+        "<rootDir>/node_modules/(?!@patternfly)"
+    ],
     moduleNameMapper : {
         '\\.(css)$': '<rootDir>/src/contentScript/buttonInjector/__mocks__/css.ts'
     },
