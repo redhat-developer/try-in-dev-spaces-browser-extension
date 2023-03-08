@@ -126,7 +126,7 @@ export const App = () => {
             <SplitItem>
                 <div className="pf-c-form__helper-text pf-m-error">
                     Provide the URL of your Dev Spaces installation, e.g.,
-                    https://devspaces.mycluster.redhat.com
+                    https://devspaces.mycluster.mycorp.com
                 </div>
             </SplitItem>
         </Split>
