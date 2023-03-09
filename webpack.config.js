@@ -4,13 +4,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isFirefoxSafari = process.env.TARGET == 'firefox-safari'
-
-const TARGET_FOLDER = ['dist', isFirefoxSafari ? 'firefox-safari' : 'chromium'];
 const isProduction = process.env.NODE_ENV == 'production';
 
-const stylesHandler = isProduction
-  ? MiniCssExtractPlugin.loader
-  : 'style-loader';
+const TARGET_FOLDER = ['dist', isFirefoxSafari ? 'firefox-safari' : 'chromium'];
 
 const config = {
   entry: {
@@ -53,12 +49,19 @@ const config = {
       },
       {
         test: /\.css$/i,
-        use: [stylesHandler, 'css-loader'],
+        use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: 'asset',
-      },
+        test: /\.(woff|woff2)$/i,
+        include: [
+          path.resolve(__dirname, 'node_modules/@patternfly/react-core/dist/styles/assets/fonts'),
+          path.resolve(__dirname, 'node_modules/@patternfly/react-core/dist/styles/assets/pficon'),
+        ],
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]'
+        }
+      }
     ],
   },
   resolve: {
