@@ -1,4 +1,5 @@
 # Try in Dev Spaces Browser Extension
+[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://workspaces.openshift.com#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension)
 
 This web extension adds a `Dev Spaces` button on every GitHub repository page that starts a new workspace based on the current repository.
 
