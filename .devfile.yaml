@@ -1,0 +1,32 @@
+schemaVersion: 2.2.0
+metadata:
+  name: try-in-dev-spaces-browser-extension
+components:
+  - name: tooling-container
+    container:
+      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      memoryRequest: 256M
+      memoryLimit: 1536M
+      cpuRequest: 100m
+      cpuLimit: 1500m
+commands:
+  - id: 1-dependencies
+    exec:
+      label: "Download dependencies"
+      component: tooling-container
+      commandLine: yarn
+  - id: 2-build
+    exec:
+      label: "Run the build"
+      component: tooling-container
+      commandLine: yarn build
+  - id: 3-build-safari-firefox
+    exec:
+      label: "Run the build for safari or firefox"
+      component: tooling-container
+      commandLine: yarn build:firefox-safari
+  - id: 4-run-tests
+    exec:
+      label: "Run tests"
+      component: tooling-container
+      commandLine: yarn test
