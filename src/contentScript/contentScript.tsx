@@ -5,9 +5,4 @@
 
 import { ButtonInjectorFactory } from "./buttonInjector/ButtonInjectorFactory";
 
-try {
-    ButtonInjectorFactory.getButtonInjector()?.inject();
-} catch (e) {
-    const message = e instanceof Error ? e.message : e;
-    console.log(`try-in-web-ide-browser-extension error: ${message}`);
-}
+ButtonInjectorFactory.getButtonInjector()?.inject();

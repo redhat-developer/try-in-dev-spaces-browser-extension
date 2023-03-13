@@ -89,9 +89,6 @@ export class GitHubButtonInjector implements ButtonInjector {
         }
 
         const projectURL = getProjectURL();
-        if (!projectURL) {
-            throw new Error("Could not detect project URL.");
-        }
 
         const endpoints = await getEndpoints();
         this.setActiveEndpointToFront(endpoints);
