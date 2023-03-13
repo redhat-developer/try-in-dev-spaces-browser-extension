@@ -5,11 +5,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserJSPlugin = require("terser-webpack-plugin");
-const webpack = require("webpack");
 
 module.exports = merge(common("production"), {
     mode: "production",
-    devtool: "source-map",
+    devtool: false,
     entry: {
         // Have custom styles specific to the options page be a seperate chunk
         // This is done so that the css import order in the options html page can be set
