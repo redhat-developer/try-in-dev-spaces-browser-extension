@@ -1,9 +1,9 @@
 const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-const isFirefoxSafari = process.env.TARGET == "firefox-safari";
+const isFirefoxSafari = process.env.TARGET == "safari-firefox";
 
-const TARGET_FOLDER = ["dist", isFirefoxSafari ? "firefox-safari" : "chromium"];
+const TARGET_FOLDER = ["dist", isFirefoxSafari ? "safari-firefox" : "chromium"];
 
 module.exports = (env) => {
     const isProduction = env == "production";
@@ -60,6 +60,9 @@ module.exports = (env) => {
                     },
                 },
             ],
+        },
+        performance: {
+            hints: false,
         },
         resolve: {
             extensions: [".tsx", ".ts", ".jsx", ".js", "..."],

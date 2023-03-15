@@ -18,7 +18,7 @@ import {
 import { Divider } from "@patternfly/react-core/components/Divider";
 import { Split, SplitItem } from "@patternfly/react-core/layouts/Split";
 import { Form, FormGroup } from "@patternfly/react-core/components/Form";
-import { TextInput } from "@patternfly/react-core/components/Textinput";
+import { TextInput } from "@patternfly/react-core/components/TextInput";
 import { ExclamationCircleIcon } from "@patternfly/react-icons/dist/js/icons/exclamation-circle-icon";
 import {
     Endpoint,
