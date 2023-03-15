@@ -24,7 +24,7 @@ commands:
     exec:
       label: "Run the build for safari or firefox"
       component: tooling-container
-      commandLine: yarn build:firefox-safari
+      commandLine: yarn build:sf
   - id: 4-run-tests
     exec:
       label: "Run tests"
