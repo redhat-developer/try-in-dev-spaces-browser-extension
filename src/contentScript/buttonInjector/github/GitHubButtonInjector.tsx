@@ -35,7 +35,7 @@ export class GitHubButtonInjector implements ButtonInjector {
     }
 
     private static codeBtnExists(element: Element): boolean {
-        const btnList = element.getElementsByClassName("btn-primary btn");
+        const btnList = element.getElementsByClassName("Button--primary Button");
         for (const btn of btnList) {
             if ((btn as HTMLElement).innerText.indexOf("Code") > -1) {
                 return true;
