@@ -5,7 +5,10 @@
 
 import { Split, SplitItem } from "@patternfly/react-core/layouts/Split";
 import { Label } from "@patternfly/react-core/components/Label";
-import { SimpleList, SimpleListItem } from "@patternfly/react-core/components/SimpleList";
+import {
+    SimpleList,
+    SimpleListItem,
+} from "@patternfly/react-core/components/SimpleList";
 import { Truncate } from "@patternfly/react-core/components/Truncate";
 
 import { Endpoint } from "../preferences/preferences";
@@ -33,6 +36,7 @@ export const EndpointsList = (props: Props) => {
                         <SplitItem>
                             <Label
                                 className="pf-u-ml-sm pf-u-mr-sm"
+                                aria-label="Default endpoint"
                                 isCompact
                                 color="blue"
                             >

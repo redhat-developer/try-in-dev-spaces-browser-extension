@@ -14,7 +14,11 @@ interface Props {
 export const DropdownItem = (props: PropsWithChildren<Props>) => {
     return (
         <li className="gh-list-item">
-            <a className="gh-dropdown-item" {...getAttributes(props)}>
+            <a
+                className="gh-dropdown-item"
+                aria-label={props["aria-label"]}
+                {...getAttributes(props)}
+            >
                 {props.children}
             </a>
         </li>
@@ -30,7 +34,7 @@ const getAttributes = (props: Props): any => {
         attr.onClick = props.onClick;
     }
     if (props.newTab) {
-        attr.target = "_blank"
+        attr.target = "_blank";
     }
     return attr;
 };
