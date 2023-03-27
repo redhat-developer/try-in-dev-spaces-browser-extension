@@ -7,7 +7,7 @@ exports[`Snapshot tests renders correctly with multiple endpoints 1`] = `
     id="try-in-web-ide-btn"
   >
     <a
-      class="gh-btn btn-primary"
+      class="gh-btn gh-btn-padding Button--primary Button"
       href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
       target="_blank"
       title="Open the project on https://url-1.com"
@@ -30,7 +30,7 @@ exports[`Snapshot tests renders correctly with multiple endpoints, with dropdown
     id="try-in-web-ide-btn"
   >
     <a
-      class="gh-btn btn-primary"
+      class="gh-btn gh-btn-padding Button--primary Button"
       href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
       target="_blank"
       title="Open the project on https://url-1.com"
@@ -114,7 +114,7 @@ exports[`Snapshot tests renders correctly with one endpoint 1`] = `
     id="try-in-web-ide-btn"
   >
     <a
-      class="gh-btn btn-primary"
+      class="gh-btn gh-btn-padding Button--primary Button"
       href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
       target="_blank"
       title="Open the project on https://url-1.com"

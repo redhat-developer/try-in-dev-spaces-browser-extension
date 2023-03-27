@@ -22,7 +22,6 @@
 .gh-btn {
     position: relative;
     display: inline-block;
-    padding: 5px 16px;
     font-size: 14px;
     font-weight: var(--base-text-weight-medium, 500);
     line-height: 20px;
@@ -35,6 +34,10 @@
     border-radius: 6px;
     -webkit-appearance: none;
     appearance: none;
+}
+
+.gh-btn-padding {
+    padding: 5px 16px !important;
 }
 
 .gh-btn:hover {
