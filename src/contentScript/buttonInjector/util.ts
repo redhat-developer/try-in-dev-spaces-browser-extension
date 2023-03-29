@@ -17,7 +17,7 @@ export function getProjectURL(): string {
 }
 
 export function getFactoryURL(projectURL: string, endpoint: Endpoint) {
-    return endpoint.url + "/#" + projectURL;
+    return endpoint.url + "/f?url=" + projectURL;
 }
 
 export function getHostName(endpoint: Endpoint) {
