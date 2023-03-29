@@ -1,6 +1,6 @@
 {
   "name": "try-in-web-ide-browser-extension",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Adds a button to GitHub that opens projects on Dev Spaces instances.",
   "repository": "https://github.com/redhat-developer/try-in-dev-spaces-browser-extension",
   "license": "MIT",
