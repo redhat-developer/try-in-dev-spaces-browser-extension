@@ -50,6 +50,7 @@ exports[`renders correctly with multiple endpoints 1`] = `
                   class="pf-l-split__item"
                 >
                   <span
+                    aria-label="Default endpoint"
                     class="pf-c-label pf-m-blue pf-m-compact pf-u-ml-sm pf-u-mr-sm"
                   >
                     <span
@@ -66,6 +67,7 @@ exports[`renders correctly with multiple endpoints 1`] = `
                   class="pf-l-split__item"
                 >
                   <div
+                    aria-label="Toggle dropdown"
                     class="pf-c-dropdown pf-m-align-right pf-u-float-right"
                     data-ouia-component-id="OUIA-Generated-Dropdown-2"
                     data-ouia-component-type="PF4/Dropdown"
@@ -135,6 +137,7 @@ exports[`renders correctly with multiple endpoints 1`] = `
                   class="pf-l-split__item"
                 >
                   <div
+                    aria-label="Toggle dropdown"
                     class="pf-c-dropdown pf-m-align-right pf-u-float-right"
                     data-ouia-component-id="OUIA-Generated-Dropdown-3"
                     data-ouia-component-type="PF4/Dropdown"
@@ -204,6 +207,7 @@ exports[`renders correctly with multiple endpoints 1`] = `
                   class="pf-l-split__item"
                 >
                   <div
+                    aria-label="Toggle dropdown"
                     class="pf-c-dropdown pf-m-align-right pf-u-float-right"
                     data-ouia-component-id="OUIA-Generated-Dropdown-4"
                     data-ouia-component-type="PF4/Dropdown"
@@ -352,6 +356,7 @@ exports[`renders correctly with one endpoint 1`] = `
                   class="pf-l-split__item"
                 >
                   <span
+                    aria-label="Default endpoint"
                     class="pf-c-label pf-m-blue pf-m-compact pf-u-ml-sm pf-u-mr-sm"
                   >
                     <span
@@ -368,6 +373,7 @@ exports[`renders correctly with one endpoint 1`] = `
                   class="pf-l-split__item"
                 >
                   <div
+                    aria-label="Toggle dropdown"
                     class="pf-c-dropdown pf-m-align-right pf-u-float-right"
                     data-ouia-component-id="OUIA-Generated-Dropdown-1"
                     data-ouia-component-type="PF4/Dropdown"

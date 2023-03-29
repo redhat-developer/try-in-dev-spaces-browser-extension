@@ -7,14 +7,16 @@ exports[`Snapshot tests renders correctly with multiple endpoints 1`] = `
     id="try-in-web-ide-btn"
   >
     <a
+      aria-label="Open the current project in a new tab on url-1.com"
       class="gh-btn gh-btn-padding Button--primary Button"
       href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
       target="_blank"
-      title="Open the project on https://url-1.com"
+      title="Open the current project in a new tab on url-1.com"
     >
       Dev Spaces
     </a>
     <button
+      aria-label="Toggle dropdown"
       class="gh-btn btn-primary gh-dropdown-toggle gh-dropdown-toggle-split"
       title="Toggle dropdown"
       type="button"
@@ -30,14 +32,16 @@ exports[`Snapshot tests renders correctly with multiple endpoints, with dropdown
     id="try-in-web-ide-btn"
   >
     <a
+      aria-label="Open the current project in a new tab on url-1.com"
       class="gh-btn gh-btn-padding Button--primary Button"
       href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
       target="_blank"
-      title="Open the project on https://url-1.com"
+      title="Open the current project in a new tab on url-1.com"
     >
       Dev Spaces
     </a>
     <button
+      aria-label="Toggle dropdown"
       class="gh-btn btn-primary gh-dropdown-toggle gh-dropdown-toggle-split"
       title="Toggle dropdown"
       type="button"
@@ -54,12 +58,14 @@ exports[`Snapshot tests renders correctly with multiple endpoints, with dropdown
         class="gh-list-item"
       >
         <a
+          aria-label="Open the current project in a new tab on url-1.com"
           class="gh-dropdown-item"
           href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
           target="_blank"
         >
           Open with url-1.com
           <div
+            aria-label="Default endpoint"
             class="gh-pill-badge"
           >
             Default
@@ -70,6 +76,7 @@ exports[`Snapshot tests renders correctly with multiple endpoints, with dropdown
         class="gh-list-item"
       >
         <a
+          aria-label="Open the current project in a new tab on url-2.com"
           class="gh-dropdown-item"
           href="https://url-2.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
           target="_blank"
@@ -81,6 +88,7 @@ exports[`Snapshot tests renders correctly with multiple endpoints, with dropdown
         class="gh-list-item"
       >
         <a
+          aria-label="Open the current project in a new tab on url-3.com"
           class="gh-dropdown-item"
           href="https://url-3.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
           target="_blank"
@@ -97,6 +105,7 @@ exports[`Snapshot tests renders correctly with multiple endpoints, with dropdown
         class="gh-list-item"
       >
         <a
+          aria-label="Open the extension's options page in a separate tab"
           class="gh-dropdown-item"
         >
           Configure
@@ -114,14 +123,16 @@ exports[`Snapshot tests renders correctly with one endpoint 1`] = `
     id="try-in-web-ide-btn"
   >
     <a
+      aria-label="Open the current project in a new tab on url-1.com"
       class="gh-btn gh-btn-padding Button--primary Button"
       href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
       target="_blank"
-      title="Open the project on https://url-1.com"
+      title="Open the current project in a new tab on url-1.com"
     >
       Dev Spaces
     </a>
     <button
+      aria-label="Toggle dropdown"
       class="gh-btn btn-primary gh-dropdown-toggle gh-dropdown-toggle-split"
       title="Toggle dropdown"
       type="button"

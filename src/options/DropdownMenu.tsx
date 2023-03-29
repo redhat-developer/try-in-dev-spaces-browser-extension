@@ -52,6 +52,7 @@ export const DropdownMenu = (props: Props) => {
     return (
         <Dropdown
             title="Toggle dropdown"
+            aria-label="Toggle dropdown"
             className="pf-u-float-right"
             position={DropdownPosition.right}
             onSelect={onSelect}

@@ -17,10 +17,19 @@ export const EndpointDropdownItem = (props: Props) => {
     const text = `Open with ${getHostName(props.endpoint)}`;
 
     return (
-        <DropdownItem href={href} newTab>
+        <DropdownItem
+            href={href}
+            newTab
+            aria-label={
+                "Open the current project in a new tab on " +
+                getHostName(props.endpoint)
+            }
+        >
             {text}
             {props.endpoint.active && (
-                <div className="gh-pill-badge">Default</div>
+                <div aria-label="Default endpoint" className="gh-pill-badge">
+                    Default
+                </div>
             )}
         </DropdownItem>
     );

@@ -8,7 +8,7 @@ import { usePopper } from "react-popper";
 import { OPEN_OPTIONS } from "../../../backgroundScript/backgroundScript";
 
 import { Endpoint, getActiveEndpoint } from "../../../preferences/preferences";
-import { getFactoryURL } from "../util";
+import { getFactoryURL, getHostName } from "../util";
 import { DropdownItem } from "./DropdownItem";
 import { DropdownMenu, DropdownMenuDivider } from "./DropdownMenu";
 import { EndpointDropdownItem } from "./EndpointDropdownItem";
@@ -83,6 +83,7 @@ export const Button = (props: Props) => {
             <DropdownMenuDivider />
 
             <DropdownItem
+                aria-label="Open the extension's options page in a separate tab"
                 onClick={() => {
                     chrome.runtime.sendMessage({ action: OPEN_OPTIONS });
                 }}
@@ -93,6 +94,7 @@ export const Button = (props: Props) => {
     );
 
     const defaultEndpoint = getActiveEndpoint(props.endpoints);
+    const defaultHostname = getHostName(defaultEndpoint);
 
     return (
         <div className="gh-btn-group ml-2" id="try-in-web-ide-btn">
@@ -100,7 +102,14 @@ export const Button = (props: Props) => {
                 className="gh-btn gh-btn-padding Button--primary Button"
                 href={getFactoryURL(props.projectURL, defaultEndpoint)}
                 target="_blank"
-                title={"Open the project on " + defaultEndpoint.url}
+                aria-label={
+                    "Open the current project in a new tab on " +
+                    defaultHostname
+                }
+                title={
+                    "Open the current project in a new tab on " +
+                    defaultHostname
+                }
             >
                 Dev Spaces
             </a>
@@ -108,6 +117,7 @@ export const Button = (props: Props) => {
                 type="button"
                 ref={setDropdownBtn}
                 className="gh-btn btn-primary gh-dropdown-toggle gh-dropdown-toggle-split"
+                aria-label="Toggle dropdown"
                 title="Toggle dropdown"
             ></button>
             {dropdownMenu}
