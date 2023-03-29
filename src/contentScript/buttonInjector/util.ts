@@ -7,7 +7,7 @@ import { Endpoint } from "../../preferences/preferences";
 
 export function getProjectURL(): string {
     const meta = document.querySelector('meta[property="og:url"]');
-    const projectURL = meta.getAttribute("content");
+    const projectURL = meta?.getAttribute("content");
     if (!projectURL) {
         throw new Error(
             `Could not detect project URL for '${window.location.href}'.`
