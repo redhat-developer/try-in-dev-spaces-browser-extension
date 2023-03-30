@@ -6,7 +6,7 @@ components:
     container:
       image: quay.io/devfile/universal-developer-image:ubi8-latest
       memoryRequest: 256M
-      memoryLimit: 1536M
+      memoryLimit: 2Gi
       cpuRequest: 100m
       cpuLimit: 1500m
 commands:
@@ -17,16 +17,16 @@ commands:
       commandLine: yarn
   - id: 2-build
     exec:
-      label: "Run the build"
+      label: "Build for Chrome"
       component: tooling-container
       commandLine: yarn build
   - id: 3-build-safari-firefox
     exec:
-      label: "Run the build for safari or firefox"
+      label: "Build for Safari and Firefox"
       component: tooling-container
       commandLine: yarn build:sf
   - id: 4-run-tests
     exec:
-      label: "Run tests"
+      label: "Run the tests"
       component: tooling-container
       commandLine: yarn test
