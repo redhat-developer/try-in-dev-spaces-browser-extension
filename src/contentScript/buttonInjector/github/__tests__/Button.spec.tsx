@@ -70,7 +70,7 @@ describe("Functional tests", () => {
 
         const btn = screen.getByText("Dev Spaces");
         expect((btn as HTMLAnchorElement).href).toEqual(
-            "https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+            "https://url-1.com/f?url=https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
         );
     });
 
@@ -87,7 +87,7 @@ describe("Functional tests", () => {
 
         const btn = screen.getByText("Dev Spaces");
         expect((btn as HTMLAnchorElement).href).toEqual(
-            "https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+            "https://url-1.com/f?url=https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
         );
     });
 
@@ -104,7 +104,7 @@ describe("Functional tests", () => {
 
         const btn = screen.getByText("Dev Spaces");
         expect((btn as HTMLAnchorElement).href).toEqual(
-            "https://url-2.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+            "https://url-2.com/f?url=https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
         );
     });
 

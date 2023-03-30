@@ -9,7 +9,7 @@ exports[`Snapshot tests renders correctly with multiple endpoints 1`] = `
     <a
       aria-label="Open the current project in a new tab on url-1.com"
       class="gh-btn gh-btn-padding Button--primary Button"
-      href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+      href="https://url-1.com/f?url=https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
       target="_blank"
       title="Open the current project in a new tab on url-1.com"
     >
@@ -34,7 +34,7 @@ exports[`Snapshot tests renders correctly with multiple endpoints, with dropdown
     <a
       aria-label="Open the current project in a new tab on url-1.com"
       class="gh-btn gh-btn-padding Button--primary Button"
-      href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+      href="https://url-1.com/f?url=https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
       target="_blank"
       title="Open the current project in a new tab on url-1.com"
     >
@@ -60,7 +60,7 @@ exports[`Snapshot tests renders correctly with multiple endpoints, with dropdown
         <a
           aria-label="Open the current project in a new tab on url-1.com"
           class="gh-dropdown-item"
-          href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+          href="https://url-1.com/f?url=https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
           target="_blank"
         >
           Open with url-1.com
@@ -78,7 +78,7 @@ exports[`Snapshot tests renders correctly with multiple endpoints, with dropdown
         <a
           aria-label="Open the current project in a new tab on url-2.com"
           class="gh-dropdown-item"
-          href="https://url-2.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+          href="https://url-2.com/f?url=https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
           target="_blank"
         >
           Open with url-2.com
@@ -90,7 +90,7 @@ exports[`Snapshot tests renders correctly with multiple endpoints, with dropdown
         <a
           aria-label="Open the current project in a new tab on url-3.com"
           class="gh-dropdown-item"
-          href="https://url-3.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+          href="https://url-3.com/f?url=https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
           target="_blank"
         >
           Open with url-3.com
@@ -125,7 +125,7 @@ exports[`Snapshot tests renders correctly with one endpoint 1`] = `
     <a
       aria-label="Open the current project in a new tab on url-1.com"
       class="gh-btn gh-btn-padding Button--primary Button"
-      href="https://url-1.com/#https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+      href="https://url-1.com/f?url=https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
       target="_blank"
       title="Open the current project in a new tab on url-1.com"
     >
