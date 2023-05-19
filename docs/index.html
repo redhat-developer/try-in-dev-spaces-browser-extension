@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./dist/output.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="flex justify-center h-full px-12 pb-20">
+        <div class="my-8 max-w-screen-md">
+            <div class="flex gap-4 my-12">
+                <div class="flex-none">
+                    <img class="inline-block" src="./assets/icon.png" alt="Try in Dev Spaces icon" width="48">
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center h-full">
+                        <h1 class="text-4xl font-bold">
+                            Try in Dev Spaces Browser Extension
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+            <img class="h-auto max-h-96 shadow-lg" src="./assets/screenshot.png" alt="Button screenshot on GitHub">
+
+            <div class="my-8">
+                <h1 class="text-2xl font-bold my-4" id="privacy-policy">
+                    About
+                </h1>
+                <p class="mb-4">
+                    The Try in Dev Spaces Browser Extension adds a "Dev Spaces" button used to create cloud development
+                    environments in your <a href="https://access.redhat.com/products/red-hat-openshift-dev-spaces/"
+                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Red Hat OpenShift Dev
+                        Spaces</a> instance.
+                </p>
+
+                <p class="mb-4">
+                    This extension can be configured to create development environments in your Dev Spaces or Eclipse
+                    Che® instance. By default, development environments are created on Eclipse Che® hosted by Red Hat
+                    running on the <a href="https://developers.redhat.com/developer-sandbox"
+                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Red Hat Developer
+                        Sandbox</a>.
+                </p>
+
+                <p class="mb-4">
+                    The extension's source code is hosted on <a
+                        href="https://github.com/redhat-developer/try-in-dev-spaces-browser-extension"
+                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">GitHub</a> and is available
+                    under the MIT license. Pull requests are welcome. If you have any questions, concerns, issues or
+                    feature requests, please <a
+                        href="https://github.com/redhat-developer/try-in-dev-spaces-browser-extension/issues/new"
+                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">file an issue</a>.
+                </p>
+            </div>
+
+            <div class="my-8">
+                <h1 class="text-2xl font-bold my-4" id="privacy-policy">
+                    Privacy policy
+                </h1>
+                <p class="mb-4">
+                    The Try in Dev Spaces Browser Extension does not collect and send any data from your web browser to
+                    Red Hat.
+                </p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>
+                        Storage permissions are required to leverage the
+                        <a href="https://developer.chrome.com/docs/extensions/reference/storage/"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Chrome Storage API</a>
+                        to allow your options to be saved locally and synced across devices.
+                    </li>
+                    <li>
+                        Access to your data on github.com is required to determine the factory URL (i.e. the URL used to
+                        create a workpsace in a Dev Spaces instance) for the "Dev Spaces" button, and for adding the
+                        button onto the GitHub webpage.
+                    </li>
+                    <li>
+                        Usage of the Red Hat Developer Sandbox is subject to the <a
+                            href="https://www.redhat.com/en/about/privacy-policy"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Red Hat Privacy
+                            Statement</a>.
+                    </li>
+                </ul>
+                <p class="my-4">
+                    If you believe this privacy policy has been violated, please <a
+                        href="https://github.com/redhat-developer/try-in-dev-spaces-browser-extension/issues/new"
+                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">file an issue</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
