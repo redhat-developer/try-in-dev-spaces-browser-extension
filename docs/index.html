@@ -62,20 +62,23 @@
                     Privacy policy
                 </h1>
                 <p class="mb-4">
-                    The Try in Dev Spaces Browser Extension does not collect and send any data from your web browser to
-                    Red Hat.
+                    The Try in Dev Spaces Browser Extension does not collect and send any data from your web browser.
                 </p>
                 <ul class="list-disc list-inside space-y-2">
                     <li>
                         Storage permissions are required to leverage the
                         <a href="https://developer.chrome.com/docs/extensions/reference/storage/"
                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Chrome Storage API</a>
-                        to allow your options to be saved locally and synced across devices.
+                        to allow your Dev Spaces endpoints from the extension's options page to be saved locally and
+                        synced across your devices. Extension storage syncing can be disabled from the web browser's
+                        settings/preferences.
                     </li>
                     <li>
-                        Access to your data on github.com is required to determine the factory URL (i.e. the URL used to
-                        create a workspace in a Dev Spaces instance) for the "Dev Spaces" button, and for adding the
-                        button onto the GitHub webpage.
+                        Access to your data on github.com is required for:
+                        <ul class="list-disc list-inside pl-4">
+                            <li>Determining the GitHub repository URL to construct hyperlinks required for the "Dev Spaces" button</li>
+                            <li>Injecting the "Dev Spaces" button element into the GitHub repository web page</li>
+                        </ul>
                     </li>
                     <li>
                         Usage of the Red Hat Developer Sandbox is subject to the <a
