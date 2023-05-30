@@ -9,6 +9,8 @@ By default, the new workspace is created on the [Eclipse Che® hosted by Red Hat
 
 Additional Dev Spaces (and upstream Eclipse Che®) instances can configured from the extension's options.
 
+[![name](./images/readme/firefox-button.png)](https://addons.mozilla.org/en-US/firefox/addon/try-in-dev-spaces/)
+
 ## Extension permissions
 
  - Requires `storage` permissions to lerverage the [Storage API](https://developer.chrome.com/docs/extensions/reference/storage/) to allow your options to be saved locally and synced across devices.
