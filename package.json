@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "concurrently \"yarn run tailwind-css\" \"yarn run live-server\"",
-    "live-server": "live-server --port=8080 --open=docs",
+    "live-server": "live-server --port=8080 --open=docs --no-browser",
     "tailwind-css": "npx tailwindcss -i ./docs/input.css -o ./docs/dist/output.css --watch --minify"
   }
 }
