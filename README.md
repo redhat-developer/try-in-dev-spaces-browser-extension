@@ -9,7 +9,11 @@ By default, the new workspace is created on the [Eclipse Che® hosted by Red Hat
 
 Additional Dev Spaces (and upstream Eclipse Che®) instances can configured from the extension's options.
 
-[![name](./images/readme/firefox-button.png)](https://addons.mozilla.org/en-US/firefox/addon/try-in-dev-spaces/)
+## Downloading the extension
+
+Chromium-based browsers             |  Safari |  Firefox
+:-------------------------:|:-------------------------:|:-------------------------:
+<a href="https://chrome.google.com/webstore/detail/try-in-dev-spaces/gbookaeilomckmoofeocnkfidfeendan"><img src="./images/readme/chrome-button.png" width="200" /></a> |  <a href="https://apps.apple.com/us/app/try-in-dev-spaces/id6446597744"><img src="./images/readme/safari-button.png" width="160" /></a> | <a href="https://addons.mozilla.org/en-US/firefox/addon/try-in-dev-spaces"><img src="./images/readme/firefox-button.png" width="115" /></a>
 
 ## Extension permissions
 
