@@ -1,0 +1,28 @@
+schemaVersion: 2.2.0
+metadata:
+  name: try-in-dev-spaces-webpage
+components:
+  - name: tools
+    container:
+      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      mountSources: true
+      endpoints:
+        - name: live-server
+          targetPort: 8080
+          protocol: https
+          secure: true
+          exposure: public
+          path: /docs
+commands:
+  - id: download
+    exec:
+      label: "Download dependencies"
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: "yarn"
+  - id: development-server
+    exec:
+      label: "Run development server"
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: "yarn run start"
