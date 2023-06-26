@@ -34,3 +34,15 @@ export function getActiveEndpoint(endpoints: Endpoint[]): Endpoint {
     }
     return active;
 }
+
+export async function getGitDomains(): Promise<string[]> {
+    const storedDomains = (await chrome.storage.sync.get({
+        gitDomains: [],
+    })).gitDomains;
+
+    return storedDomains;
+}
+
+export function saveGitDomains(domains: string[]): Promise<void> {
+    return chrome.storage.sync.set({ gitDomains: domains });
+}

@@ -6,22 +6,13 @@
       "id": "{e5b67b9e-a1bd-11ed-a8fc-0242ac120002}"
     }
   },
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "host_permissions": ["https://github.com/*"],
   "background": {
     "service_worker": "backgroundScript.bundle.js"
-  }, 
-  "content_scripts": [
-    {
-      "js": [
-        "contentScript.bundle.js"
-      ],
-      "matches": [
-        "https://github.com/*"
-      ],
-      "run_at": "document_idle"
-    }
-  ],
+  },
   "permissions": [
-    "storage"
+    "storage", "scripting"
   ],
   "options_ui": {
     "page": "options.html",

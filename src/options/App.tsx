@@ -3,174 +3,90 @@
  *  Licensed under the MIT License. See LICENSE file in the project root for license information.
  *-----------------------------------------------------------------------------------------------*/
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import "@patternfly/react-core/dist/styles/base.css";
 import "@patternfly/patternfly/utilities/Spacing/spacing.css";
 import "@patternfly/patternfly/utilities/Float/float.css";
 
-import { Button } from "@patternfly/react-core/components/Button";
+import { Card } from "@patternfly/react-core/components/Card";
 import {
-    Card,
-    CardBody,
-    CardTitle,
-} from "@patternfly/react-core/components/Card";
-import { Divider } from "@patternfly/react-core/components/Divider";
-import { Split, SplitItem } from "@patternfly/react-core/layouts/Split";
-import { Form, FormGroup } from "@patternfly/react-core/components/Form";
-import { TextInput } from "@patternfly/react-core/components/TextInput";
-import { ExclamationCircleIcon } from "@patternfly/react-icons/dist/js/icons/exclamation-circle-icon";
-import {
-    Endpoint,
-    getEndpoints,
-    saveEndpoints,
-} from "../preferences/preferences";
-import { EndpointsList } from "./EndpointsList";
+    PageSection,
+    PageSectionVariants,
+    Tabs,
+    Tab,
+    TabContent,
+    TabContentBody,
+    TabTitleText,
+} from "@patternfly/react-core";
+import { GitDomains } from "./GitDomains";
+import { DevSpacesEndpoints } from "./DevSpacesEndpoints";
 import "./styles/App.css";
 
 export const App = () => {
-    const [endpoints, setEndpoints] = useState<Endpoint[]>([]);
-    const [newEndpointUrl, setNewEndpointUrl] = useState<string>("");
+    const [activeTabKey, setActiveTabKey] = useState(0);
 
-    type validate = "success" | "error" | "default";
-    const [newEndpointStatus, setNewEndpointStatus] =
-        useState<validate>("default");
-
-    useEffect(() => {
-        updateEndpoints().catch(console.error);
-    }, []);
-
-    const updateEndpoints = async () => {
-        const endpoints = await getEndpoints();
-        setEndpoints(endpoints);
+    const handleTabClick = (_, tabIndex) => {
+        setActiveTabKey(tabIndex);
     };
-
-    const handleNewEndpointUrlChange = (
-        newUrl: string,
-        _event: React.FormEvent<HTMLInputElement>
-    ) => {
-        setNewEndpointUrl(newUrl);
-        if (newUrl === "") {
-            setNewEndpointStatus("default");
-        } else if (isUrl(newUrl)) {
-            setNewEndpointStatus("success");
-        } else {
-            setNewEndpointStatus("error");
-        }
-    };
-
-    const isUrl = (str: string) => {
-        try {
-            new URL(str);
-        } catch {
-            return false;
-        }
-        return true;
-    };
-
-    const addNewEndpoint = async () => {
-        const sanitizedEndpoint = sanitizeEndpoint(newEndpointUrl);
-        const newEndpoints = endpoints.concat({
-            url: sanitizedEndpoint,
-            active: false,
-            readonly: false,
-        });
-        await saveEndpoints(newEndpoints);
-        await updateEndpoints();
-        setNewEndpointUrl("");
-        setNewEndpointStatus("default");
-    };
-
-    const sanitizeEndpoint = (str: string) => {
-        let res = str;
-        while (res.charAt(res.length - 1) === "/") {
-            res = res.substring(0, res.length - 1);
-        }
-        return res;
-    };
-
-    const setDefault = async (endpoint: Endpoint) => {
-        const newEndpoints = [...endpoints];
-        newEndpoints.forEach((e) => {
-            e.active = e == endpoint;
-        });
-        await saveEndpoints(newEndpoints);
-        await updateEndpoints();
-    };
-
-    const deleteEndpoint = async (endpoint: Endpoint) => {
-        const newEndpoints = endpoints.filter((e) => e != endpoint);
-        await saveEndpoints(newEndpoints);
-        await updateEndpoints();
-    };
-
-    const list = endpoints.length && (
-        <EndpointsList
-            endpoints={endpoints}
-            onClickSetDefault={setDefault}
-            onClickDelete={deleteEndpoint}
-        />
-    );
-
-    const helperTextInvalid = (
-        <Split className="pf-u-mt-xs">
-            <SplitItem>
-                <ExclamationCircleIcon
-                    color="var(--pf-global--danger-color--100)"
-                    className="pf-u-mr-xs"
-                />
-            </SplitItem>
-            <SplitItem>
-                <div className="pf-c-form__helper-text pf-m-error">
-                    Provide the URL of your Dev Spaces installation, e.g.,
-                    https://devspaces.mycluster.mycorp.com
-                </div>
-            </SplitItem>
-        </Split>
-    );
 
     return (
         <Card>
-            <CardTitle>Dev Spaces endpoints</CardTitle>
-            <CardBody>
-                {list}
-                <Divider className="pf-u-mt-md pf-u-mb-md" />
-                <Split>
-                    <SplitItem className="form-text-input">
-                        <Form>
-                            <FormGroup
-                                validated={newEndpointStatus}
-                                helperTextInvalid={helperTextInvalid}
-                                helperTextInvalidIcon={
-                                    <ExclamationCircleIcon />
-                                }
-                            >
-                                <TextInput
-                                    type="text"
-                                    aria-label="new endpoint"
-                                    validated={newEndpointStatus}
-                                    value={newEndpointUrl}
-                                    placeholder="Add endpoint"
-                                    onChange={handleNewEndpointUrlChange}
-                                />
-                            </FormGroup>
-                        </Form>
-                    </SplitItem>
-                    <SplitItem className="form-fill" isFilled></SplitItem>
-                    <SplitItem>
-                        <Button
-                            variant="primary"
-                            onClick={addNewEndpoint}
-                            isDisabled={
-                                newEndpointUrl.length === 0 ||
-                                newEndpointStatus === "error"
-                            }
-                        >
-                            Add
-                        </Button>
-                    </SplitItem>
-                </Split>
-            </CardBody>
+            <PageSection
+                type="tabs"
+                variant={PageSectionVariants.light}
+                isWidthLimited
+            >
+                <Tabs
+                    activeKey={activeTabKey}
+                    onSelect={handleTabClick}
+                    usePageInsets
+                    id="open-tabs-example-tabs-list"
+                >
+                    <Tab
+                        eventKey={0}
+                        title={
+                            <TabTitleText>Dev Spaces endpoints</TabTitleText>
+                        }
+                        tabContentId={`tabContent${0}`}
+                    />
+                    <Tab
+                        eventKey={1}
+                        title={
+                            <TabTitleText>
+                                GitHub Enterprise domains
+                            </TabTitleText>
+                        }
+                        tabContentId={`tabContent${1}`}
+                    />
+                </Tabs>
+            </PageSection>
+            <PageSection isWidthLimited variant={PageSectionVariants.light}>
+                <TabContent
+                    key={0}
+                    eventKey={0}
+                    id={`tabContent${0}`}
+                    activeKey={activeTabKey}
+                    hidden={0 !== activeTabKey}
+                    data-testid="dev-spaces-endpoints-tab"
+                >
+                    <TabContentBody>
+                        <DevSpacesEndpoints />
+                    </TabContentBody>
+                </TabContent>
+                <TabContent
+                    key={1}
+                    eventKey={1}
+                    id={`tabContent${1}`}
+                    activeKey={activeTabKey}
+                    hidden={1 !== activeTabKey}
+                    data-testid="git-domains-tab"
+                >
+                    <TabContentBody>
+                        <GitDomains />
+                    </TabContentBody>
+                </TabContent>
+            </PageSection>
         </Card>
     );
 };

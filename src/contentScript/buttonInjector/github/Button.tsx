@@ -5,7 +5,7 @@
 
 import React from "react";
 import { usePopper } from "react-popper";
-import { OPEN_OPTIONS } from "../../../backgroundScript/backgroundScript";
+import { OPEN_OPTIONS } from "../../../messageActions";
 
 import { Endpoint, getActiveEndpoint } from "../../../preferences/preferences";
 import { getFactoryURL, getHostName } from "../util";
