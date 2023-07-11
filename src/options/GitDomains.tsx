@@ -145,10 +145,9 @@ export const GitDomains = () => {
             <RemoveAlert
                 isOpen={isModalOpen}
                 handleModalToggle={handleModalToggle}
-                onClickRemove={() => {
-                    removeDomain(domainToRemove).then(() => {
-                        setDomainToRemove(undefined);
-                    });
+                onClickRemove={async () => {
+                    await removeDomain(domainToRemove);
+                    setDomainToRemove(undefined);
                     handleModalToggle();
                 }}
             >

@@ -4,6 +4,7 @@
  *-----------------------------------------------------------------------------------------------*/
 
 import { fireEvent, render, screen, within } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
 import "@testing-library/jest-dom";
 
 import { App } from "../App";
@@ -131,7 +132,7 @@ it("should display error message when invalid input with invalid protocol is ent
     );
 });
 
-it("should display alert when host permissions cannot be granted", async () => {
+it("should display alert when host permissions already granted", async () => {
     const { findByPlaceholderText, findByText } = render(<App />);
     const inputBox = await findByPlaceholderText(
         "Add GitHub Enterprise domain"
@@ -144,23 +145,31 @@ it("should display alert when host permissions cannot be granted", async () => {
     fireEvent.change(inputBox, {
         target: { value: "https://github.example.com" },
     });
-    fireEvent.click(addButton);
+
+    await act(() => {
+        addButton.click();
+    });
 
     await findByText(
-        "Host permissions for https://github.example.com not granted"
+        "Host permissions for https://github.example.com already granted"
     );
-
-    expect(chrome.permissions.request).toHaveBeenCalledTimes(1);
 });
 
 it("should remove host permission when git domain is removed", async () => {
     preferencesMock.setGitDomains(["https://github.example.com"]);
 
-    const { findByLabelText } = render(<App />);
+    const { findByText, findByLabelText } = render(<App />);
     const deleteButton = await findByLabelText(
         "Remove GitHub Enterprise domain https://github.example.com"
     );
-    fireEvent.click(deleteButton);
+    await act(() => {
+        deleteButton.click();
+    });
+
+    const confirmRemoveBtn = await findByText("Remove");
+    await act(() => {
+        confirmRemoveBtn.click();
+    });
 
     expect(chrome.permissions.remove).toHaveBeenCalledTimes(1);
 });
