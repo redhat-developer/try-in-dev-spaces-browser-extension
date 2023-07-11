@@ -40,10 +40,7 @@ export const GitDomains = () => {
 
         await Promise.all(
             domains.map(async (domain) => {
-                let granted = await chrome.permissions.contains({
-                    permissions: ["scripting"],
-                    origins: [getOriginPattern(domain)],
-                });
+                let granted = await containsPermissions(domain);
                 if (!granted) {
                     granted = await promptPermissions(domain);
                 }
@@ -100,18 +97,29 @@ export const GitDomains = () => {
         await updateDomains();
     };
 
-    const promptPermissions = (domain: string) => {
-        return chrome.permissions.request({
+    const promptPermissions = async (domain: string): Promise<boolean> => {
+        if (await containsPermissions(domain)) {
+            throw new Error(`Host permissions for ${domain} already granted`);
+        }
+
+        return await chrome.permissions.request({
             permissions: ["scripting"],
             origins: [getOriginPattern(domain)],
         });
     };
 
-    const removePermissions = (domain: string) => {
+    const removePermissions = (domain: string): Promise<boolean> => {
         return chrome.permissions.remove({
             origins: [getOriginPattern(domain)],
         });
     };
+
+    const containsPermissions = (domain: string): Promise<boolean> => {
+        return chrome.permissions.contains({
+            permissions: ["scripting"],
+            origins: [getOriginPattern(domain)],
+        });
+    }
 
     const getOriginPattern = (domain: string) => {
         return domain + "/*";
