@@ -13,14 +13,28 @@ import { getGitDomains, saveGitDomains } from "../preferences/preferences";
 import { GitDomainList } from "./GitDomainList";
 import { sanitizeUrl } from "./util";
 import { FormUI } from "./FormUI";
+import { RemoveAlert } from "./RemoveAlert";
 
 export const GitDomains = () => {
     const [domains, setDomains] = useState<string[]>([]);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [domainToRemove, setDomainToRemove] = useState<string | undefined>(
+        undefined
+    );
 
     useEffect(() => {
         updateDomains().then(checkPermissionsOnMount).catch(console.error);
     }, []);
 
+    const handleModalToggle = () => {
+        setIsModalOpen(!isModalOpen);
+    };
+
+    /**
+     * Check if permissions are granted for each domain on mount
+     * @param domains
+     */
     const checkPermissionsOnMount = async (domains) => {
         const newDomains = [];
 
@@ -45,6 +59,10 @@ export const GitDomains = () => {
         }
     };
 
+    /**
+     * Updates state and returns domains with the domains from storage
+     * @returns the domains from storage
+     */
     const updateDomains = async () => {
         const domains = await getGitDomains();
         setDomains(domains);
@@ -65,7 +83,12 @@ export const GitDomains = () => {
         return true;
     };
 
-    const deleteDomain = async (domain: string) => {
+    const displayRemoveAlert = (domain: string) => {
+        setDomainToRemove(domain);
+        setIsModalOpen(true);
+    };
+
+    const removeDomain = async (domain: string) => {
         const removed = await removePermissions(domain);
         if (!removed) {
             return;
@@ -95,7 +118,7 @@ export const GitDomains = () => {
     };
 
     const list = domains.length && (
-        <GitDomainList domains={domains} onClickDelete={deleteDomain} />
+        <GitDomainList domains={domains} onClickDelete={displayRemoveAlert} />
     );
 
     return (
@@ -110,6 +133,19 @@ export const GitDomains = () => {
                 textInputPlaceholder="Add GitHub Enterprise domain"
                 addBtnAriaLabel="add github enterprise domain"
             />
+
+            <RemoveAlert
+                isOpen={isModalOpen}
+                handleModalToggle={handleModalToggle}
+                onClickRemove={() => {
+                    removeDomain(domainToRemove).then(() => {
+                        setDomainToRemove(undefined);
+                    });
+                    handleModalToggle();
+                }}
+            >
+                {`Are you sure you want to remove "${domainToRemove}" from the list of GitHub Enterprise domains?`}
+            </RemoveAlert>
         </Fragment>
     );
 };
