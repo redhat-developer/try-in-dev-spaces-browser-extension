@@ -99,7 +99,7 @@ export const Button = (props: Props) => {
     return (
         <div className="gh-btn-group ml-2" id="try-in-web-ide-btn">
             <a
-                className="gh-btn gh-btn-padding Button--primary Button"
+                className="gh-btn gh-btn-padding Button--primary btn-primary Button"
                 href={getFactoryURL(props.projectURL, defaultEndpoint)}
                 target="_blank"
                 aria-label={
