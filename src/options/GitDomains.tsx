@@ -41,9 +41,6 @@ export const GitDomains = () => {
         await Promise.all(
             domains.map(async (domain) => {
                 let granted = await containsPermissions(domain);
-                if (!granted) {
-                    granted = await promptPermissions(domain);
-                }
                 if (granted) {
                     newDomains.push(domain);
                 }
@@ -68,6 +65,9 @@ export const GitDomains = () => {
 
     const addNewDomain = async (newDomain: string) => {
         const sanitizedDomain = sanitizeUrl(newDomain);
+        if (domains.includes(sanitizedDomain)) {
+            throw new Error(`Host permissions for ${newDomain} already granted`)
+        }
         const granted = await promptPermissions(sanitizedDomain);
 
         if (!granted) {
@@ -98,11 +98,7 @@ export const GitDomains = () => {
     };
 
     const promptPermissions = async (domain: string): Promise<boolean> => {
-        if (await containsPermissions(domain)) {
-            throw new Error(`Host permissions for ${domain} already granted`);
-        }
-
-        return await chrome.permissions.request({
+        return chrome.permissions.request({
             permissions: ["scripting"],
             origins: [getOriginPattern(domain)],
         });

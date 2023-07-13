@@ -85,6 +85,9 @@ function copyManifestToDist(isProduction) {
         } else {
             // for Chromium based browsers browser_specific_settings is not supported
             delete manifest["browser_specific_settings"];
+
+            // for Chromium based browsers optional_permissions = ["scripting"] is not required
+            delete manifest["optional_permissions"];
         }
 
         return JSON.stringify(

@@ -6,6 +6,7 @@
       "id": "{e5b67b9e-a1bd-11ed-a8fc-0242ac120002}"
     }
   },
+  "optional_permissions": ["scripting"],
   "optional_host_permissions": ["https://*/*", "http://*/*"],
   "host_permissions": ["https://github.com/*"],
   "background": {
