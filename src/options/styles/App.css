@@ -1,16 +1,12 @@
-.pf-c-card {
-    --pf-c-card__title--FontWeight: var(--pf-global--FontWeight--normal);
-    --pf-c-card__title--not--last-child--PaddingBottom: var(--pf-global--spacer--sm);
-    --pf-c-card__title--FontSize: var(--pf-global--FontSize--xl);
-    --pf-c-card--first-child--PaddingTop: var(--pf-global--spacer--md);
-    --pf-c-card--child--PaddingBottom: var(--pf-global--spacer--xl);
-    --pf-c-card--child--PaddingRight: var(--pf-global--spacer--xl);
-    --pf-c-card--child--PaddingLeft: var(--pf-global--spacer--xl);
-    height: 100%;
+.pf-c-tab-content__body {
+    --pf-c-tab-content__body--PaddingTop: var(--pf-global--spacer--md);
+    --pf-c-tab-content__body--PaddingRight: var(--pf-global--spacer--xl);
+    --pf-c-tab-content__body--PaddingLeft: var(--pf-global--spacer--xl);
+    --pf-c-tab-content__body--PaddingBottom: var(--pf-global--spacer--xl);
 }
 
-.pf-c-card__body {
-    background-color: var(--pf-c-card--BackgroundColor);
+.pf-c-card {
+    height: 100%;
 }
 
 /* styling the list of endpoints */
@@ -62,4 +58,8 @@
 
 #root {
     height: 100%;
+}
+
+.new-line {
+    white-space: pre;
 }

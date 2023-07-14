@@ -26,7 +26,7 @@ export class GitHubButtonInjector implements ButtonInjector {
         const actionBar = document.querySelector(
             GitHubButtonInjector.GITHUB_ELEMENT
         );
-        
+
         if (!actionBar) {
             return false;
         }
@@ -35,7 +35,9 @@ export class GitHubButtonInjector implements ButtonInjector {
     }
 
     private static codeBtnExists(element: Element): boolean {
-        const btnList = element.getElementsByClassName("Button--primary Button");
+        const btnList = element.getElementsByTagName(
+            "summary"
+        );
         for (const btn of btnList) {
             if ((btn as HTMLElement).innerText.indexOf("Code") > -1) {
                 return true;
@@ -45,22 +47,6 @@ export class GitHubButtonInjector implements ButtonInjector {
     }
 
     public async inject() {
-        await this._inject();
-
-        // GitHub uses Turbo to load the project repo's `Code`, `Issues`, `Pull requests`,
-        // `Actions`, etc. pages. In case the user clicks from a non-Code page to the Code
-        // page, try to inject button.
-        document.addEventListener("turbo:load", () => {
-            if (GitHubButtonInjector.matches()) {
-                this._inject();
-            } else if (this.root) {
-                this.root.unmount();
-                this.root = undefined;
-            }
-        });
-    }
-
-    private async _inject() {
         if (document.getElementById(GitHubButtonInjector.BUTTON_ID)) {
             return;
         }
@@ -70,7 +56,14 @@ export class GitHubButtonInjector implements ButtonInjector {
         const rootElement = document.createElement("div");
         rootElement.id = GitHubButtonInjector.BUTTON_ID;
         this.root = ReactDOM.createRoot(rootElement);
-        this.root.render(<Button endpoints={endpoints} projectURL={projectURL} />);
+        this.root.render(
+            <Button endpoints={endpoints} projectURL={projectURL} />
+        );
+
+        if (document.getElementById(GitHubButtonInjector.BUTTON_ID)) {
+            return;
+        }
+
         ghElement.appendChild(rootElement);
     }
 

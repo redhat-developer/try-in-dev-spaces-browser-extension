@@ -79,14 +79,15 @@ function copyManifestToDist(isProduction) {
             // for Firefox/Safari, background scripts are declared in the manifest differently
             const backgroundScript = manifest.background.service_worker;
             manifest.background = { scripts: [backgroundScript] };
+
+            // optional_host_permissions should be merged into optional_permissions
+            manifest.optional_permissions = manifest.optional_permissions.concat(manifest.optional_host_permissions);
         } else {
             // for Chromium based browsers browser_specific_settings is not supported
             delete manifest["browser_specific_settings"];
-        }
 
-        // For production, reference the generated content script css created by MiniCssExtractPlugin
-        if (isProduction) {
-            manifest.content_scripts[0]["css"] = ["contentScript.css"];
+            // for Chromium based browsers optional_permissions = ["scripting"] is not required
+            delete manifest["optional_permissions"];
         }
 
         return JSON.stringify(

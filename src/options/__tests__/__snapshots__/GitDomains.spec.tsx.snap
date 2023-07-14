@@ -1,0 +1,691 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with multiple domains 1`] = `
+<DocumentFragment>
+  <article
+    class="pf-c-card"
+    data-ouia-component-id="OUIA-Generated-Card-2"
+    data-ouia-component-type="PF4/Card"
+    data-ouia-safe="true"
+    id=""
+  >
+    <section
+      class="pf-c-page__main-tabs pf-m-light pf-m-limit-width"
+    >
+      <div
+        class="pf-c-page__main-body"
+      >
+        <div
+          class="pf-c-tabs pf-m-page-insets"
+          data-ouia-component-id="OUIA-Generated-Tabs-2"
+          data-ouia-component-type="PF4/Tabs"
+          data-ouia-safe="true"
+          id="open-tabs-example-tabs-list"
+        >
+          <ul
+            class="pf-c-tabs__list"
+            role="tablist"
+          >
+            <li
+              class="pf-c-tabs__item pf-m-current"
+              role="presentation"
+            >
+              <button
+                aria-controls="tabContent0"
+                aria-selected="true"
+                class="pf-c-tabs__link"
+                data-ouia-component-type="PF4/TabButton"
+                data-ouia-safe="true"
+                id="pf-tab-0-open-tabs-example-tabs-list"
+                role="tab"
+                type="button"
+              >
+                <span
+                  class="pf-c-tabs__item-text"
+                >
+                  Dev Spaces endpoints
+                </span>
+              </button>
+            </li>
+            <li
+              class="pf-c-tabs__item"
+              role="presentation"
+            >
+              <button
+                aria-controls="tabContent1"
+                aria-selected="false"
+                class="pf-c-tabs__link"
+                data-ouia-component-type="PF4/TabButton"
+                data-ouia-safe="true"
+                id="pf-tab-1-open-tabs-example-tabs-list"
+                role="tab"
+                type="button"
+              >
+                <span
+                  class="pf-c-tabs__item-text"
+                >
+                  GitHub Enterprise domains
+                </span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section
+      class="pf-c-page__main-section pf-m-light pf-m-limit-width"
+    >
+      <div
+        class="pf-c-page__main-body"
+      >
+        <section
+          aria-labelledby="tabContent0"
+          class="pf-c-tab-content"
+          data-ouia-component-type="PF4/TabContent"
+          data-ouia-safe="true"
+          data-testid="dev-spaces-endpoints-tab"
+          id="tabContent0"
+          role="tabpanel"
+          tabindex="0"
+        >
+          <div
+            class="pf-c-tab-content__body"
+          >
+            No endpoints added yet
+            <hr
+              class="pf-c-divider pf-u-mt-md pf-u-mb-md"
+            />
+            <div
+              class="pf-l-split"
+            >
+              <div
+                class="pf-l-split__item form-text-input"
+              >
+                <form
+                  class="pf-c-form"
+                  novalidate=""
+                >
+                  <div
+                    class="pf-c-form__group"
+                  >
+                    <div
+                      class="pf-c-form__group-control"
+                    >
+                      <input
+                        aria-invalid="false"
+                        aria-label="new endpoint"
+                        class="pf-c-form-control"
+                        data-ouia-component-id="OUIA-Generated-TextInputBase-3"
+                        data-ouia-component-type="PF4/TextInput"
+                        data-ouia-safe="true"
+                        placeholder="Add endpoint"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="pf-l-split__item pf-m-fill form-fill"
+              />
+              <div
+                class="pf-l-split__item"
+              >
+                <button
+                  aria-disabled="true"
+                  aria-label="add endpoint"
+                  class="pf-c-button pf-m-primary pf-m-disabled"
+                  data-ouia-component-id="OUIA-Generated-Button-primary-3"
+                  data-ouia-component-type="PF4/Button"
+                  data-ouia-safe="true"
+                  disabled=""
+                  type="button"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          aria-labelledby="tabContent1"
+          class="pf-c-tab-content"
+          data-ouia-component-type="PF4/TabContent"
+          data-ouia-safe="true"
+          data-testid="git-domains-tab"
+          hidden=""
+          id="tabContent1"
+          role="tabpanel"
+          tabindex="0"
+        >
+          <div
+            class="pf-c-tab-content__body"
+          >
+            <div
+              class="pf-c-simple-list"
+              data-testid="git-domains-list"
+            >
+              <ul>
+                <li
+                  class=""
+                >
+                  <a
+                    class="pf-c-simple-list__item-link"
+                    href=""
+                    tabindex="0"
+                  >
+                    <div
+                      class="pf-l-split"
+                    >
+                      <div
+                        class="pf-l-split__item"
+                      >
+                        <span
+                          class="pf-c-truncate"
+                        >
+                          <span
+                            class="pf-c-truncate__start"
+                          >
+                            https://github.example-1.com
+                          </span>
+                        </span>
+                      </div>
+                      <div
+                        class="pf-l-split__item pf-m-fill"
+                      />
+                      <div
+                        class="pf-l-split__item"
+                      >
+                        <button
+                          aria-disabled="false"
+                          aria-label="Remove GitHub Enterprise domain https://github.example-1.com"
+                          class="pf-c-button pf-m-link pf-m-danger pf-u-p-0"
+                          data-ouia-component-id="OUIA-Generated-Button-link-2"
+                          data-ouia-component-type="PF4/Button"
+                          data-ouia-safe="true"
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            fill="currentColor"
+                            height="1em"
+                            role="img"
+                            style="vertical-align: -0.125em;"
+                            viewBox="0 0 448 512"
+                            width="1em"
+                          >
+                            <path
+                              d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li
+                  class=""
+                >
+                  <a
+                    class="pf-c-simple-list__item-link"
+                    href=""
+                    tabindex="0"
+                  >
+                    <div
+                      class="pf-l-split"
+                    >
+                      <div
+                        class="pf-l-split__item"
+                      >
+                        <span
+                          class="pf-c-truncate"
+                        >
+                          <span
+                            class="pf-c-truncate__start"
+                          >
+                            https://github.example-2.com
+                          </span>
+                        </span>
+                      </div>
+                      <div
+                        class="pf-l-split__item pf-m-fill"
+                      />
+                      <div
+                        class="pf-l-split__item"
+                      >
+                        <button
+                          aria-disabled="false"
+                          aria-label="Remove GitHub Enterprise domain https://github.example-2.com"
+                          class="pf-c-button pf-m-link pf-m-danger pf-u-p-0"
+                          data-ouia-component-id="OUIA-Generated-Button-link-3"
+                          data-ouia-component-type="PF4/Button"
+                          data-ouia-safe="true"
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            fill="currentColor"
+                            height="1em"
+                            role="img"
+                            style="vertical-align: -0.125em;"
+                            viewBox="0 0 448 512"
+                            width="1em"
+                          >
+                            <path
+                              d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li
+                  class=""
+                >
+                  <a
+                    class="pf-c-simple-list__item-link"
+                    href=""
+                    tabindex="0"
+                  >
+                    <div
+                      class="pf-l-split"
+                    >
+                      <div
+                        class="pf-l-split__item"
+                      >
+                        <span
+                          class="pf-c-truncate"
+                        >
+                          <span
+                            class="pf-c-truncate__start"
+                          >
+                            https://github.example-3.com
+                          </span>
+                        </span>
+                      </div>
+                      <div
+                        class="pf-l-split__item pf-m-fill"
+                      />
+                      <div
+                        class="pf-l-split__item"
+                      >
+                        <button
+                          aria-disabled="false"
+                          aria-label="Remove GitHub Enterprise domain https://github.example-3.com"
+                          class="pf-c-button pf-m-link pf-m-danger pf-u-p-0"
+                          data-ouia-component-id="OUIA-Generated-Button-link-4"
+                          data-ouia-component-type="PF4/Button"
+                          data-ouia-safe="true"
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            fill="currentColor"
+                            height="1em"
+                            role="img"
+                            style="vertical-align: -0.125em;"
+                            viewBox="0 0 448 512"
+                            width="1em"
+                          >
+                            <path
+                              d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <hr
+              class="pf-c-divider pf-u-mt-md pf-u-mb-md"
+            />
+            <div
+              class="pf-l-split"
+            >
+              <div
+                class="pf-l-split__item form-text-input"
+              >
+                <form
+                  class="pf-c-form"
+                  novalidate=""
+                >
+                  <div
+                    class="pf-c-form__group"
+                  >
+                    <div
+                      class="pf-c-form__group-control"
+                    >
+                      <input
+                        aria-invalid="false"
+                        aria-label="add github enterprise domain"
+                        class="pf-c-form-control"
+                        data-ouia-component-id="OUIA-Generated-TextInputBase-4"
+                        data-ouia-component-type="PF4/TextInput"
+                        data-ouia-safe="true"
+                        placeholder="Add GitHub Enterprise domain"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="pf-l-split__item pf-m-fill form-fill"
+              />
+              <div
+                class="pf-l-split__item"
+              >
+                <button
+                  aria-disabled="true"
+                  aria-label="add github enterprise domain"
+                  class="pf-c-button pf-m-primary pf-m-disabled"
+                  data-ouia-component-id="OUIA-Generated-Button-primary-4"
+                  data-ouia-component-type="PF4/Button"
+                  data-ouia-safe="true"
+                  disabled=""
+                  type="button"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </article>
+</DocumentFragment>
+`;
+
+exports[`renders correctly with one domain 1`] = `
+<DocumentFragment>
+  <article
+    class="pf-c-card"
+    data-ouia-component-id="OUIA-Generated-Card-1"
+    data-ouia-component-type="PF4/Card"
+    data-ouia-safe="true"
+    id=""
+  >
+    <section
+      class="pf-c-page__main-tabs pf-m-light pf-m-limit-width"
+    >
+      <div
+        class="pf-c-page__main-body"
+      >
+        <div
+          class="pf-c-tabs pf-m-page-insets"
+          data-ouia-component-id="OUIA-Generated-Tabs-1"
+          data-ouia-component-type="PF4/Tabs"
+          data-ouia-safe="true"
+          id="open-tabs-example-tabs-list"
+        >
+          <ul
+            class="pf-c-tabs__list"
+            role="tablist"
+          >
+            <li
+              class="pf-c-tabs__item pf-m-current"
+              role="presentation"
+            >
+              <button
+                aria-controls="tabContent0"
+                aria-selected="true"
+                class="pf-c-tabs__link"
+                data-ouia-component-type="PF4/TabButton"
+                data-ouia-safe="true"
+                id="pf-tab-0-open-tabs-example-tabs-list"
+                role="tab"
+                type="button"
+              >
+                <span
+                  class="pf-c-tabs__item-text"
+                >
+                  Dev Spaces endpoints
+                </span>
+              </button>
+            </li>
+            <li
+              class="pf-c-tabs__item"
+              role="presentation"
+            >
+              <button
+                aria-controls="tabContent1"
+                aria-selected="false"
+                class="pf-c-tabs__link"
+                data-ouia-component-type="PF4/TabButton"
+                data-ouia-safe="true"
+                id="pf-tab-1-open-tabs-example-tabs-list"
+                role="tab"
+                type="button"
+              >
+                <span
+                  class="pf-c-tabs__item-text"
+                >
+                  GitHub Enterprise domains
+                </span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section
+      class="pf-c-page__main-section pf-m-light pf-m-limit-width"
+    >
+      <div
+        class="pf-c-page__main-body"
+      >
+        <section
+          aria-labelledby="tabContent0"
+          class="pf-c-tab-content"
+          data-ouia-component-type="PF4/TabContent"
+          data-ouia-safe="true"
+          data-testid="dev-spaces-endpoints-tab"
+          id="tabContent0"
+          role="tabpanel"
+          tabindex="0"
+        >
+          <div
+            class="pf-c-tab-content__body"
+          >
+            No endpoints added yet
+            <hr
+              class="pf-c-divider pf-u-mt-md pf-u-mb-md"
+            />
+            <div
+              class="pf-l-split"
+            >
+              <div
+                class="pf-l-split__item form-text-input"
+              >
+                <form
+                  class="pf-c-form"
+                  novalidate=""
+                >
+                  <div
+                    class="pf-c-form__group"
+                  >
+                    <div
+                      class="pf-c-form__group-control"
+                    >
+                      <input
+                        aria-invalid="false"
+                        aria-label="new endpoint"
+                        class="pf-c-form-control"
+                        data-ouia-component-id="OUIA-Generated-TextInputBase-1"
+                        data-ouia-component-type="PF4/TextInput"
+                        data-ouia-safe="true"
+                        placeholder="Add endpoint"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="pf-l-split__item pf-m-fill form-fill"
+              />
+              <div
+                class="pf-l-split__item"
+              >
+                <button
+                  aria-disabled="true"
+                  aria-label="add endpoint"
+                  class="pf-c-button pf-m-primary pf-m-disabled"
+                  data-ouia-component-id="OUIA-Generated-Button-primary-1"
+                  data-ouia-component-type="PF4/Button"
+                  data-ouia-safe="true"
+                  disabled=""
+                  type="button"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          aria-labelledby="tabContent1"
+          class="pf-c-tab-content"
+          data-ouia-component-type="PF4/TabContent"
+          data-ouia-safe="true"
+          data-testid="git-domains-tab"
+          hidden=""
+          id="tabContent1"
+          role="tabpanel"
+          tabindex="0"
+        >
+          <div
+            class="pf-c-tab-content__body"
+          >
+            <div
+              class="pf-c-simple-list"
+              data-testid="git-domains-list"
+            >
+              <ul>
+                <li
+                  class=""
+                >
+                  <a
+                    class="pf-c-simple-list__item-link"
+                    href=""
+                    tabindex="0"
+                  >
+                    <div
+                      class="pf-l-split"
+                    >
+                      <div
+                        class="pf-l-split__item"
+                      >
+                        <span
+                          class="pf-c-truncate"
+                        >
+                          <span
+                            class="pf-c-truncate__start"
+                          >
+                            https://github.example.com
+                          </span>
+                        </span>
+                      </div>
+                      <div
+                        class="pf-l-split__item pf-m-fill"
+                      />
+                      <div
+                        class="pf-l-split__item"
+                      >
+                        <button
+                          aria-disabled="false"
+                          aria-label="Remove GitHub Enterprise domain https://github.example.com"
+                          class="pf-c-button pf-m-link pf-m-danger pf-u-p-0"
+                          data-ouia-component-id="OUIA-Generated-Button-link-1"
+                          data-ouia-component-type="PF4/Button"
+                          data-ouia-safe="true"
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            fill="currentColor"
+                            height="1em"
+                            role="img"
+                            style="vertical-align: -0.125em;"
+                            viewBox="0 0 448 512"
+                            width="1em"
+                          >
+                            <path
+                              d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <hr
+              class="pf-c-divider pf-u-mt-md pf-u-mb-md"
+            />
+            <div
+              class="pf-l-split"
+            >
+              <div
+                class="pf-l-split__item form-text-input"
+              >
+                <form
+                  class="pf-c-form"
+                  novalidate=""
+                >
+                  <div
+                    class="pf-c-form__group"
+                  >
+                    <div
+                      class="pf-c-form__group-control"
+                    >
+                      <input
+                        aria-invalid="false"
+                        aria-label="add github enterprise domain"
+                        class="pf-c-form-control"
+                        data-ouia-component-id="OUIA-Generated-TextInputBase-2"
+                        data-ouia-component-type="PF4/TextInput"
+                        data-ouia-safe="true"
+                        placeholder="Add GitHub Enterprise domain"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="pf-l-split__item pf-m-fill form-fill"
+              />
+              <div
+                class="pf-l-split__item"
+              >
+                <button
+                  aria-disabled="true"
+                  aria-label="add github enterprise domain"
+                  class="pf-c-button pf-m-primary pf-m-disabled"
+                  data-ouia-component-id="OUIA-Generated-Button-primary-2"
+                  data-ouia-component-type="PF4/Button"
+                  data-ouia-safe="true"
+                  disabled=""
+                  type="button"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </article>
+</DocumentFragment>
+`;
