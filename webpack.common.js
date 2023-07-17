@@ -1,9 +1,10 @@
 const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-const isFirefoxSafari = process.env.TARGET == "safari-firefox";
+const SAFARI = "safari";
+const FIREFOX = "firefox";
 
-const TARGET_FOLDER = ["dist", isFirefoxSafari ? "safari-firefox" : "chromium"];
+const TARGET_FOLDER = ["dist", process.env.TARGET ? process.env.TARGET : "chromium"];
 
 module.exports = (env) => {
     const isProduction = env == "production";
@@ -75,13 +76,16 @@ function copyManifestToDist(isProduction) {
     function getModifiedManifest(content) {
         const manifest = JSON.parse(content.toString());
 
-        if (isFirefoxSafari) {
+        if (process.env.TARGET === SAFARI || process.env.TARGET === FIREFOX) {
             // for Firefox/Safari, background scripts are declared in the manifest differently
             const backgroundScript = manifest.background.service_worker;
             manifest.background = { scripts: [backgroundScript] };
 
+            if (process.env.TARGET === FIREFOX) {
             // optional_host_permissions should be merged into optional_permissions
             manifest.optional_permissions = manifest.optional_permissions.concat(manifest.optional_host_permissions);
+            delete manifest.optional_host_permissions;
+            }
         } else {
             // for Chromium based browsers browser_specific_settings is not supported
             delete manifest["browser_specific_settings"];
