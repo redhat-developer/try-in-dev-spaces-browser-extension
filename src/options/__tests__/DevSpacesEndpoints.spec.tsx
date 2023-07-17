@@ -12,6 +12,10 @@ const preferencesMock = require("../../preferences/preferences");
 
 jest.mock("../../preferences/preferences");
 
+afterEach(() => {
+    preferencesMock.reset();
+});
+
 it("renders correctly with one endpoint", async () => {
     preferencesMock.setEndpoints([
         { url: "https://url-1.com", active: true, readonly: true },

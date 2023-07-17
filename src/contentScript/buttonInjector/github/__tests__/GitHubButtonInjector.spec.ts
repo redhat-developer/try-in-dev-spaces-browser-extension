@@ -21,6 +21,7 @@ describe("Test GitHubButtonInjector.matches()", () => {
 
     afterEach(() => {
         jest.clearAllMocks();
+        preferencesMock.reset();
     });
 
     it("should return true if div has 'Code' button", async () => {
@@ -80,6 +81,7 @@ describe("Inject button on GitHub project repo page", () => {
 
     afterEach(() => {
         jest.clearAllMocks();
+        preferencesMock.reset();
     });
 
     it("should inject react element", async () => {
