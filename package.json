@@ -48,11 +48,14 @@
   },
   "scripts": {
     "build": "webpack --config webpack.dev.js",
-    "build:sf": "cross-env TARGET=safari-firefox webpack --config webpack.dev.js",
+    "build:safari": "cross-env TARGET=safari webpack --config webpack.dev.js",
+    "build:firefox": "cross-env TARGET=firefox webpack --config webpack.dev.js",
     "build:prod": "webpack --config webpack.prod.js",
-    "build:prod-sf": "cross-env TARGET=safari-firefox webpack --config webpack.prod.js",
+    "build:prod-safari": "cross-env TARGET=safari webpack --config webpack.prod.js",
+    "build:prod-firefox": "cross-env TARGET=firefox webpack --config webpack.prod.js",
     "watch": "yarn build --watch",
-    "watch:sf": "yarn build:sf --watch",
+    "watch:safari": "yarn build:safari --watch",
+    "watch:firefox": "yarn build:firefox --watch",
     "test": "jest"
   },
   "dependencies": {

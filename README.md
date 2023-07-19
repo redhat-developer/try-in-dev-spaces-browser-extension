@@ -41,15 +41,20 @@ To build for Chromium-based browsers:
 $ yarn build
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-To build for Firefox or Safari:
+To build for Safari:
 ```
-$ yarn build:sf
+$ yarn build:safari
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Once complete, the built extension will be located in either `dist/chromium` or `dist/safari-firefox`.
+To build for Firefox:
+```
+$ yarn build:firefox
+```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Once complete, the built extension will be located in either `dist/chromium` or `dist/safari` or `dist/firefox`.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-For development, run `yarn watch` or `yarn watch:sf` to watch the source files to recompile on changes.
+For development, run `yarn watch`, `yarn watch:safari`, or `yarn watch:firefox` to watch the source files to recompile on changes.
 
 3. Sideload the extension located under the `dist` folder into your web browser.
 For instructions for different web browsers, refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
@@ -62,10 +67,17 @@ yarn build:prod
 ```
 The built location is located in `dist/chromium`.
 
-#### For Safari and Firefox
+#### For Safari
 ```
 # the built extension is located in dist/safari-firefox
-yarn build:prod-sf
+yarn build:prod-safari
+```
+The built location is located in `dist/safari-firefox`.
+
+#### For Firefox
+```
+# the built extension is located in dist/firefox
+yarn build:prod-firefox
 ```
 The built location is located in `dist/safari-firefox`.
 

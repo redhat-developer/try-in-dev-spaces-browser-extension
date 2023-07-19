@@ -20,12 +20,17 @@ commands:
       label: "Build for Chrome"
       component: tooling-container
       commandLine: yarn build
-  - id: 3-build-safari-firefox
+  - id: 3-build-safari
     exec:
-      label: "Build for Safari and Firefox"
+      label: "Build for Safari"
       component: tooling-container
-      commandLine: yarn build:sf
-  - id: 4-run-tests
+      commandLine: yarn build:safari
+  - id: 4-build-firefox
+    exec:
+      label: "Build for Firefox"
+      component: tooling-container
+      commandLine: yarn build:firefox
+  - id: 5-run-tests
     exec:
       label: "Run the tests"
       component: tooling-container
