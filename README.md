@@ -17,9 +17,11 @@ Chromium-based browsers             |  Safari |  Firefox
 
 ## Extension permissions
 
- - Requires `storage` permissions to lerverage the [Storage API](https://developer.chrome.com/docs/extensions/reference/storage/) to allow your options to be saved locally and synced across devices.
+ - Requires `storage` permissions to leverage the [Storage API](https://developer.chrome.com/docs/extensions/reference/storage/) to allow your options to be saved locally and synced across devices.
 
- - Access to your data on github.com. This is required to determine the factory url for the button, and for injecting the button element into the webpage.
+ - Requires `scripting` permissions to allow the background script to inject the content script based on new conditions set by the user. More specifically, when setting new GitHub Enterprise instances from the extension options page, the extension needs scripting permissions to inject the "Dev Spaces" button on the user-provided GitHub Enterprise instances.
+
+ - Access to your data on `github.com` (and GitHub Enterprise domains if applicable). This is required to determine the factory url for the button, and for injecting the button element into the webpage.
 
 ## Building and running locally
 
