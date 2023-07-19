@@ -22,6 +22,7 @@ beforeEach(() => {
 
 afterEach(() => {
     jest.clearAllMocks();
+    preferencesMock.reset();
 });
 
 it("renders correctly with one domain", async () => {
@@ -132,7 +133,7 @@ it("should display error message when invalid input with invalid protocol is ent
     );
 });
 
-it("should display alert when host permissions already granted", async () => {
+it("should display alert when host permissions cannot be granted", async () => {
     const { findByPlaceholderText, findByText } = render(<App />);
     const inputBox = await findByPlaceholderText(
         "Add GitHub Enterprise domain"
@@ -146,13 +147,42 @@ it("should display alert when host permissions already granted", async () => {
         target: { value: "https://github.example.com" },
     });
 
-    await act(() => {
+    await act(async () => {
         addButton.click();
     });
 
     await findByText(
-        "Host permissions for https://github.example.com already granted"
+        "Host permissions for https://github.example.com not granted"
     );
+
+    expect(chrome.permissions.request).toHaveBeenCalledTimes(1);
+});
+
+it("should trim url of leading and trailing whitespaces", async () => {
+    const { findByPlaceholderText } = render(<App />);
+    const inputBox = await findByPlaceholderText(
+        "Add GitHub Enterprise domain"
+    );
+    const domainsTab = await screen.findByTestId("git-domains-tab");
+    const addButton = (await within(domainsTab).findByText("Add")).closest(
+        "button"
+    );
+
+    fireEvent.change(inputBox, {
+        target: { value: "    https://github.example.com   " },
+    });
+
+    await act(async () => {
+        addButton.click();
+    });
+
+    expect(chrome.permissions.request).toHaveBeenCalledTimes(1);
+    expect(chrome.permissions.request).toHaveBeenCalledWith({
+        origins: ["https://github.example.com/*"],
+        permissions: [
+            "scripting",
+        ],
+    });
 });
 
 it("should remove host permission when git domain is removed", async () => {

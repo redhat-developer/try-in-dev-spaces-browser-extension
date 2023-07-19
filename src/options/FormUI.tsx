@@ -61,7 +61,7 @@ export const FormUI = (props: Props) => {
 
     const addBtnClicked = async () => {
         try {
-            const success = await props.onAdd(newUrl);
+            const success = await props.onAdd(newUrl.trim());
             if (success) {
                 setNewUrl("");
                 setNewUrlStatus("default");

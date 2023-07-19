@@ -22,4 +22,8 @@ module.exports = {
     setGitDomains(_gitDomains: string[]) {
         gitDomains = _gitDomains;
     },
+    reset() {
+        endpoints = [];
+        gitDomains = [];
+    },
 };
