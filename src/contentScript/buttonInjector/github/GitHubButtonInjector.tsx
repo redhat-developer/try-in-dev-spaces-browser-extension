@@ -46,12 +46,14 @@ export class GitHubButtonInjector implements ButtonInjector {
         return false;
     }
 
-    public async inject() {
+    public async inject(endpoints: Endpoint[]) {
         if (document.getElementById(GitHubButtonInjector.BUTTON_ID)) {
             return;
         }
 
-        const { ghElement, endpoints, projectURL } = await this.prepare();
+        this.setActiveEndpointToFront(endpoints);
+
+        const { ghElement, projectURL } = this.prepare();
 
         const rootElement = document.createElement("div");
         rootElement.id = GitHubButtonInjector.BUTTON_ID;
@@ -67,11 +69,10 @@ export class GitHubButtonInjector implements ButtonInjector {
         ghElement.appendChild(rootElement);
     }
 
-    private async prepare(): Promise<{
+    private prepare(): {
         ghElement: Element;
         projectURL: string;
-        endpoints: Endpoint[];
-    }> {
+    } {
         const ghElement = document.querySelector(
             GitHubButtonInjector.GITHUB_ELEMENT
         );
@@ -83,10 +84,7 @@ export class GitHubButtonInjector implements ButtonInjector {
 
         const projectURL = getProjectURL();
 
-        const endpoints = await getEndpoints();
-        this.setActiveEndpointToFront(endpoints);
-
-        return { ghElement, endpoints, projectURL };
+        return { ghElement, projectURL };
     }
 
     private setActiveEndpointToFront(endpoints: Endpoint[]) {

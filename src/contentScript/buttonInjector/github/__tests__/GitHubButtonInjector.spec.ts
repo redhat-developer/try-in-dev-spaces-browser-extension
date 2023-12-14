@@ -5,6 +5,7 @@
 
 import ReactDOM from "react-dom/client";
 import { GitHubButtonInjector } from "../GitHubButtonInjector";
+import { getEndpoints } from "../../../../preferences/preferences";
 
 const preferencesMock = require("../../../../preferences/preferences");
 
@@ -110,8 +111,9 @@ describe("Inject button on GitHub project repo page", () => {
             .mockImplementation((_: any) => {
                 return mockRoot as any;
             });
-
-        await githubService.inject();
+        
+        const endpoints = await getEndpoints();
+        await githubService.inject(endpoints);
 
         expect(createRootSpy).toBeCalledTimes(1);
         expect(mockRoot.render).toBeCalledTimes(1);
