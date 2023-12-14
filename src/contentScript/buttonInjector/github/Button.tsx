@@ -17,6 +17,7 @@ import "./styles/github.css";
 type Props = {
     endpoints: Endpoint[];
     projectURL: string;
+    additionalClasses?: string[];
 };
 
 /**
@@ -95,9 +96,10 @@ export const Button = (props: Props) => {
 
     const defaultEndpoint = getActiveEndpoint(props.endpoints);
     const defaultHostname = getHostName(defaultEndpoint);
+    const { additionalClasses = [] } = props;
 
     return (
-        <div className="gh-btn-group ml-2" id="try-in-web-ide-btn">
+        <div className={["gh-btn-group"].concat(additionalClasses).join(' ')} id="try-in-web-ide-btn">
             <a
                 className="gh-btn gh-btn-padding Button--primary btn-primary Button"
                 href={getFactoryURL(props.projectURL, defaultEndpoint)}

@@ -7,15 +7,12 @@ import ReactDOM from "react-dom/client";
 import {
     Endpoint,
     getActiveEndpoint,
-    getEndpoints,
 } from "../../../preferences/preferences";
 import { ButtonInjector } from "../ButtonInjector";
-import { getProjectURL } from "../util";
-import { Button } from "./Button";
+import { getInjectionStrategy } from "./injectionStrategy/GitHubInjectionStrategy";
 
 export class GitHubButtonInjector implements ButtonInjector {
-    private static BUTTON_ID = "try-in-web-ide-btn";
-    private static GITHUB_ELEMENT = ".file-navigation";
+    public static BUTTON_ID = "try-in-web-ide-btn";
 
     private root: ReactDOM.Root | undefined;
 
@@ -23,68 +20,15 @@ export class GitHubButtonInjector implements ButtonInjector {
      * @returns true if current page is a GitHub page to inject the button to
      */
     public static matches(): boolean {
-        const actionBar = document.querySelector(
-            GitHubButtonInjector.GITHUB_ELEMENT
-        );
-
-        if (!actionBar) {
-            return false;
-        }
-
-        return this.codeBtnExists(actionBar);
-    }
-
-    private static codeBtnExists(element: Element): boolean {
-        const btnList = element.getElementsByTagName(
-            "summary"
-        );
-        for (const btn of btnList) {
-            if ((btn as HTMLElement).innerText.indexOf("Code") > -1) {
-                return true;
-            }
-        }
-        return false;
+        return !!getInjectionStrategy();
     }
 
     public async inject(endpoints: Endpoint[]) {
         if (document.getElementById(GitHubButtonInjector.BUTTON_ID)) {
             return;
         }
-
         this.setActiveEndpointToFront(endpoints);
-
-        const { ghElement, projectURL } = this.prepare();
-
-        const rootElement = document.createElement("div");
-        rootElement.id = GitHubButtonInjector.BUTTON_ID;
-        this.root = ReactDOM.createRoot(rootElement);
-        this.root.render(
-            <Button endpoints={endpoints} projectURL={projectURL} />
-        );
-
-        if (document.getElementById(GitHubButtonInjector.BUTTON_ID)) {
-            return;
-        }
-
-        ghElement.appendChild(rootElement);
-    }
-
-    private prepare(): {
-        ghElement: Element;
-        projectURL: string;
-    } {
-        const ghElement = document.querySelector(
-            GitHubButtonInjector.GITHUB_ELEMENT
-        );
-        if (!ghElement) {
-            throw new Error(
-                `Could find element (${GitHubButtonInjector.GITHUB_ELEMENT}) to inject button into.`
-            );
-        }
-
-        const projectURL = getProjectURL();
-
-        return { ghElement, projectURL };
+        await getInjectionStrategy()?.inject(endpoints)
     }
 
     private setActiveEndpointToFront(endpoints: Endpoint[]) {
