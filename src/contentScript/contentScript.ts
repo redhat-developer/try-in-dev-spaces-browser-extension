@@ -3,6 +3,9 @@
  *  Licensed under the MIT License. See LICENSE file in the project root for license information.
  *-----------------------------------------------------------------------------------------------*/
 
+import { Endpoint, getEndpoints } from "../preferences/preferences";
 import { ButtonInjectorFactory } from "./buttonInjector/ButtonInjectorFactory";
 
-ButtonInjectorFactory.getButtonInjector()?.inject();
+getEndpoints().then((endpoints: Endpoint[]) => {
+    ButtonInjectorFactory.getButtonInjector()?.inject(endpoints);
+});

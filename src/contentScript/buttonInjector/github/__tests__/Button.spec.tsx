@@ -19,7 +19,7 @@ describe("Snapshot tests", () => {
         ];
 
         const { asFragment } = render(
-            <Button endpoints={endpoints} projectURL={projectURL} />
+            <Button endpoints={endpoints} projectURL={projectURL} additionalClasses={['ml-2']} />
         );
         expect(asFragment()).toMatchSnapshot();
     });
@@ -32,7 +32,7 @@ describe("Snapshot tests", () => {
         ];
 
         const { asFragment } = render(
-            <Button endpoints={endpoints} projectURL={projectURL} />
+            <Button endpoints={endpoints} projectURL={projectURL} additionalClasses={['ml-2']} />
         );
         expect(asFragment()).toMatchSnapshot();
     });
@@ -45,7 +45,7 @@ describe("Snapshot tests", () => {
         ];
 
         const { asFragment } = render(
-            <Button endpoints={endpoints} projectURL={projectURL} />
+            <Button endpoints={endpoints} projectURL={projectURL} additionalClasses={['ml-2']} />
         );
         await openDropdownMenu();
 
@@ -65,7 +65,7 @@ describe("Functional tests", () => {
         ];
 
         act(() => {
-            render(<Button endpoints={endpoints} projectURL={projectURL} />);
+            render(<Button endpoints={endpoints} projectURL={projectURL} additionalClasses={['ml-2']} />);
         });
 
         const btn = screen.getByText("Dev Spaces");
@@ -82,7 +82,7 @@ describe("Functional tests", () => {
         ];
 
         act(() => {
-            render(<Button endpoints={endpoints} projectURL={projectURL} />);
+            render(<Button endpoints={endpoints} projectURL={projectURL} additionalClasses={['ml-2']} />);
         });
 
         const btn = screen.getByText("Dev Spaces");
@@ -99,7 +99,7 @@ describe("Functional tests", () => {
         ];
 
         act(() => {
-            render(<Button endpoints={endpoints} projectURL={projectURL} />);
+            render(<Button endpoints={endpoints} projectURL={projectURL} additionalClasses={['ml-2']} />);
         });
 
         const btn = screen.getByText("Dev Spaces");
@@ -116,7 +116,7 @@ describe("Functional tests", () => {
         ];
 
         act(() => {
-            render(<Button endpoints={endpoints} projectURL={projectURL} />);
+            render(<Button endpoints={endpoints} projectURL={projectURL} additionalClasses={['ml-2']} />);
         });
 
         await openDropdownMenu();
@@ -135,7 +135,7 @@ describe("Functional tests", () => {
         ];
 
         act(() => {
-            render(<Button endpoints={endpoints} projectURL={projectURL} />);
+            render(<Button endpoints={endpoints} projectURL={projectURL} additionalClasses={['ml-2']} />);
         });
 
         await openDropdownMenu();
@@ -152,7 +152,7 @@ describe("Functional tests", () => {
         ];
 
         act(() => {
-            render(<Button endpoints={endpoints} projectURL={projectURL} />);
+            render(<Button endpoints={endpoints} projectURL={projectURL} additionalClasses={['ml-2']} />);
         });
 
         await openDropdownMenu();
@@ -178,7 +178,7 @@ describe("Functional tests", () => {
         let renderResult: RenderResult;
         act(() => {
             renderResult = render(
-                <Button endpoints={endpoints} projectURL={projectURL} />
+                <Button endpoints={endpoints} projectURL={projectURL} additionalClasses={['ml-2']} />
             );
         });
 
