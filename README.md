@@ -84,6 +84,14 @@ The built location is located in `dist/safari-firefox`.
 #### Sideloading the extension into the web browser
 Refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
 
+## Building zip files for Chromium and Firefox releases
+Run the following command to build and create a zip file required when uploading to the Chrome Web Store and the Firefox Add-on Marketplace.
+
+The Chromium extension zip file will be generated under `zip/chromium.zip` and the Firefox add-on zip will be generated under `zip/firefox.zip`.
+```
+yarn build:zip
+```
+
 ## Running tests
 ```
 $ yarn test

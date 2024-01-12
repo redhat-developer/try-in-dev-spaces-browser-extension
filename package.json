@@ -53,6 +53,7 @@
     "build:prod": "webpack --config webpack.prod.js",
     "build:prod-safari": "cross-env TARGET=safari webpack --config webpack.prod.js",
     "build:prod-firefox": "cross-env TARGET=firefox webpack --config webpack.prod.js",
+    "build:zip": "yarn build:prod && yarn build:prod-firefox && ./scripts/zip.sh ./dist/chromium ./zip/chromium.zip && ./scripts/zip.sh ./dist/firefox ./zip/firefox.zip",
     "watch": "yarn build --watch",
     "watch:safari": "yarn build:safari --watch",
     "watch:firefox": "yarn build:firefox --watch",
