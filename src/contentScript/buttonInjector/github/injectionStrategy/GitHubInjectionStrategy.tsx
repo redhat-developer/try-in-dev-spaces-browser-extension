@@ -22,18 +22,22 @@ const eLcVeeClass = '.bWpuBf';
  */
 export function getInjectionStrategy(): GitHubDivInjectionStrategy | undefined {
     if (matches(fileNavigationClass, "summary")) {
-        return new GitHubDivInjectionStrategy(fileNavigationClass, ['ml-2']);
+        return new GitHubDivInjectionStrategy({divClassSelector: fileNavigationClass}, ['ml-2']);
+    }
+    if (matches(eLcVeeClass, "button")) {
+        return new GitHubDivInjectionStrategy({divClassSelector: eLcVeeClass}, []);
     }
 
-    if (matches(eLcVeeClass, "button")) {
-        return new GitHubDivInjectionStrategy(eLcVeeClass, []);
+    const codeBtn = getCodeBtn(document.body, "button");
+    if (codeBtn && codeBtn.hasAttribute("aria-expanded")) {
+        return new GitHubDivInjectionStrategy({div: codeBtn.parentElement}, []);
     }
     return undefined;
 }
 
 /**
  * Returns true if the current web page has a classSelector element with a 'Code' button
- * as its descendant. 
+ * as its descendant.
  * @param classSelector The class of the div to check whether the 'Code' button exists within 
  * @param buttonTag  The HTML tag of the 'Code' button
  * @returns true if the current web page has a classSelector element with a 'Code' button
@@ -49,13 +53,18 @@ function matches(classSelector: string, buttonTag: string): boolean {
 }
 
 function codeBtnExists(element: Element, buttonTag: string): boolean {
+    return !!getCodeBtn(element, buttonTag);
+}
+
+function getCodeBtn(element: Element, buttonTag: string): HTMLElement {
     const btnList = element.getElementsByTagName(
         buttonTag
     );
     for (const btn of btnList) {
-        if ((btn as HTMLElement).innerText.indexOf("Code") > -1) {
-            return true;
+        const element = btn as HTMLElement;
+        if (element.innerText.indexOf("Code") > -1) {
+            return btn as HTMLElement;
         }
     }
-    return false;
+    return undefined;
 }
