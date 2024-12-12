@@ -36,6 +36,7 @@ describe("Test GitHubButtonInjector.matches()", () => {
                 div.className = "file-navigation";
                 const codeBtn = document.createElement("summary");
                 codeBtn.className = "Button--primary Button--medium Button";
+                codeBtn.setAttribute("aria-expanded", "false");
                 codeBtn.innerText = "Code";
                 div.appendChild(codeBtn);
                 return div;
@@ -43,6 +44,26 @@ describe("Test GitHubButtonInjector.matches()", () => {
         );
         expect(GitHubButtonInjector.matches()).toBe(true);
     });
+
+    it("should return false if div has 'Code' button but missing aria-expanded attribute", async () => {
+        preferencesMock.setEndpoints([
+            { url: "https://url-1.com", active: true, readonly: true },
+        ]);
+
+        jest.spyOn(document, "querySelector").mockImplementation(
+            (_: string) => {
+                const div = document.createElement("div");
+                div.className = "file-navigation";
+                const codeBtn = document.createElement("summary");
+                codeBtn.className = "Button--primary Button--medium Button";
+                codeBtn.innerText = "Code";
+                div.appendChild(codeBtn);
+                return div;
+            }
+        );
+        expect(GitHubButtonInjector.matches()).toBe(true);
+    });
+
 
     it("should return false if div does not have 'Code' button", async () => {
         preferencesMock.setEndpoints([

@@ -10,16 +10,21 @@ import { GitHubButtonInjector } from "../GitHubButtonInjector";
 import { Button } from "../Button";
 import { getProjectURL } from "../../util";
 
+export interface GitHubDiv {
+    divClassSelector?: string;
+    div?: HTMLElement;
+}
+
 /**
  * Injects the 'Dev Spaces' button into a div specified by divClassSelector
  */
 export class GitHubDivInjectionStrategy {
 
-    private divClassSelector: string;
+    private githubDiv: GitHubDiv;
     private additionalBtnClasses: string[];
 
-    constructor(divClassSelector: string, additionalBtnClasses: string[]) {
-        this.divClassSelector = divClassSelector;
+    constructor(githubDiv: GitHubDiv, additionalBtnClasses: string[]) {
+        this.githubDiv = githubDiv;
         this.additionalBtnClasses = additionalBtnClasses;
     }
 
@@ -29,12 +34,10 @@ export class GitHubDivInjectionStrategy {
      */
     public async inject(endpoints: Endpoint[]): Promise<void> {
 
-        const ghElement = document.querySelector(
-            this.divClassSelector   
-        );
-        if (!ghElement) {
+        const ghElement = this.githubDiv.div ? this.githubDiv.div : document.querySelector(this.githubDiv.divClassSelector);
+        if (!ghElement && this.githubDiv.divClassSelector) {
             throw new Error(
-                `Could find element (${this.divClassSelector}) to inject button into.`
+                `Could find element (${this.githubDiv.divClassSelector}) to inject button into.`
             );
         }
 
